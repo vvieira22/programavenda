@@ -1,6 +1,6 @@
 package Controller;
 
-import programavenda.Cliente;
+import Model.Cliente;
 import java.util.ArrayList;
 
 public class controladorClientes {

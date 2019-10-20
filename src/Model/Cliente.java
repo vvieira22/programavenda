@@ -1,4 +1,4 @@
-package programavenda;
+package Model;
 
 public class Cliente {
        
