@@ -5,17 +5,17 @@
  */
 package programavenda;
 
+import View.cadastroCliente;
+
 /**
  *
  * @author vitor
  */
 public class ProgramaVenda {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        cadastroCliente.getInstance().setVisible(true);
     }
     
 }
