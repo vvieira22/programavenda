@@ -1,0 +1,23 @@
+create database programa_venda;
+
+use programa_venda;
+
+create table cliente(cpf varchar(15) primary key, codigo int unique not null, nome varchar(50) not null,
+telefoneum varchar(50) not null, telefonedois varchar(50), email varchar(50) not null, 
+rua varchar(50) not null, numero int not null, bairro varchar(50) not null, 
+complemento varchar(50) not null); 
+
+create table produto(codigo int primary key, preco float not null, nome varchar(50) not null,
+quantidade int not null);
+
+create table usuario(login varchar(30) not null, senha varchar(30) not null, 
+perfil varchar(30) not null, nome varchar(50) not null, primary key(login, senha)); 
+
+create table venda(codigo int primary key, codigo_cliente int not null, data date not null,
+total float not null, forma_pagamento varchar(20) not null, foreign key(codigo_cliente) references cliente(codigo));
+
+create table item_venda(codigo_venda int not null, codigo_produto int not null, quantidade int not null, 
+preco float not null, total_item float not null, foreign key(codigo_venda) references venda(codigo), 
+foreign key (codigo_produto) references produto(codigo));
+
+alter table item_venda add primary key(codigo_venda, codigo_produto);
