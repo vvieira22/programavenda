@@ -58,10 +58,25 @@ public class ClienteDAO {
             comando.execute();
             conectar.close();           
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
-    
+    public boolean verificarCpf(String cpf){
+        String sql= "select * from cliente where cpf like ?";
+          try {
+             Connection conectar= conexao.getInstance().abrir();      
+             PreparedStatement comando= conectar.prepareCall(sql);
+             comando.setString(1,cpf);
+             ResultSet resultset=comando.executeQuery(); 
+             resultset.next();
+             
+             if(resultset.getString("cpf").equals(cpf))
+                 return true;          
+        } catch (Exception e) {
+            return false;      
+        }
+           return false;  
+        }
     
     public ArrayList<Cliente> listarTodos(){
         ArrayList<Cliente> listacliente= new ArrayList<>();
@@ -78,6 +93,7 @@ public class ClienteDAO {
             }
             conectar.close();
         } catch (Exception e) {
+           e.printStackTrace();
         }
         return listacliente;
     }

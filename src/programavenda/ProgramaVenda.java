@@ -5,6 +5,7 @@
  */
 package programavenda;
 
+import Controller.controladorClientes;
 import Model.ClienteDAO;
 import View.cadastroCliente;
 
@@ -16,8 +17,8 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-        cadastroCliente.getInstance().setVisible(true);  
-        System.out.println(ClienteDAO.getInstance().quantidadeClientes());
+
+        controladorClientes.getInstance().excluirCliente("teste");
     }
    
     
