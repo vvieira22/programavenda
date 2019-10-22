@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import conexaoBanco.conexao;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
+
 public class ClienteDAO {
 
     private static ClienteDAO instance;
@@ -46,7 +47,7 @@ public class ClienteDAO {
     }
     
     public void removerClientedoBanco(String cpf){
-        String sql="delete from cliente where nome like ?";
+        String sql="delete from cliente where cpf like ?";
         
         try {
             Connection conectar= conexao.getInstance().abrir();  
@@ -81,5 +82,21 @@ public class ClienteDAO {
         return listacliente;
     }
  
-    
+     public int quantidadeClientes(){
+        String sql="select count(*) as quantidade from cliente";
+        
+        try {
+            Connection conectar = conexao.getInstance().abrir();
+            PreparedStatement comando= conectar.prepareCall(sql);
+            
+            ResultSet resultset=comando.executeQuery(); 
+            resultset.next(); 
+            return resultset.getInt("quantidade");
+        } catch (SQLException e) {
+            return -1;
+        }         
+    }
+     
+     
+     
 }

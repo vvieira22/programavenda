@@ -16,7 +16,8 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-        cadastroCliente.getInstance().setVisible(true);       
+        cadastroCliente.getInstance().setVisible(true);  
+        System.out.println(ClienteDAO.getInstance().quantidadeClientes());
     }
    
     
