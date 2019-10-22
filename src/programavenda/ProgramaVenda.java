@@ -5,6 +5,7 @@
  */
 package programavenda;
 
+import Model.ClienteDAO;
 import View.cadastroCliente;
 
 /**
@@ -15,7 +16,8 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-        cadastroCliente.getInstance().setVisible(true);
+        cadastroCliente.getInstance().setVisible(true);       
     }
+   
     
 }

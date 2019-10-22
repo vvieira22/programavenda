@@ -14,7 +14,7 @@ public class controladorClientes {
         quantidadeClientes=0;
     }
     
-    public static controladorClientes getInstance(){
+    public static synchronized controladorClientes getInstance(){
         if(instancia==null)
             instancia=new controladorClientes();
         return instancia;
