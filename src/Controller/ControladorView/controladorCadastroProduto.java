@@ -18,8 +18,8 @@ public class controladorCadastroProduto {
         return instance;
     }
     
-    public void cadastrarProduto(int codigo, float preco, String nome, int quantidade){
-   
+    public void cadastrarProduto(float preco, String nome, int quantidade){
+            int codigo= controladorProdutos.getInstance().gerarCodigoProduto();
             Produto produtonovo= new Produto(codigo, preco, nome, quantidade);
             controladorProdutos.getInstance().inserirProduto(produtonovo);
  

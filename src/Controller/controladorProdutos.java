@@ -40,6 +40,8 @@ public class controladorProdutos {
                 return false;
             }
     }
-    
+    public int gerarCodigoProduto() {
+        return ProdutoDAO.getInstance().quantidadeProdutos()+1;
+    }
     
 }
