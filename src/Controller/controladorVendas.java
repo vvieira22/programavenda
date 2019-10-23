@@ -24,13 +24,13 @@ public class controladorVendas {
     
     public boolean inserirVenda(Venda venda){
         int codigo= gerarCodigoVenda();
-        int codigoCliente= venda.getCodigoCliente();
+        String cpfCliente= venda.getCpfCliente();
         String data= venda.getData();
         float total= venda.getTotal();
         String formaPagamento= venda.getFormaPagamento();
         
             try{                 
-                VendaDAO.getInstance().inserirVendanoBanco(codigo, codigoCliente, data, total, formaPagamento);         
+                VendaDAO.getInstance().inserirVendanoBanco(codigo, cpfCliente, data, total, formaPagamento);         
                 vendas.add(venda);               
                 return true;
             } catch(Exception e){

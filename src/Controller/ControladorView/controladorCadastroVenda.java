@@ -17,9 +17,9 @@ public class controladorCadastroVenda {
         return instance;
     }
     
-    public void cadastrarVenda(int codigoCliente, String data, float total, String formaPagamento){     
+    public void cadastrarVenda(String cpfCliente, String data, float total, String formaPagamento){     
         int codigo= controladorVendas.getInstance().gerarCodigoVenda();
-            Venda vendanova= new Venda(codigo, codigoCliente, data, total, formaPagamento);
+            Venda vendanova= new Venda(codigo, cpfCliente, data, total, formaPagamento);
             controladorVendas.getInstance().inserirVenda(vendanova);
  
     }
