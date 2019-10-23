@@ -24,9 +24,7 @@ public class controladorCadastroCLiente {
       return numero==(int)numero;     
     }
     
-    public void cadastrarCliente(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
-        System.out.println("chegou aq");
-        JOptionPane.showMessageDialog(null, cpf+telefoneum+telefonedois);
+    public void cadastrarCliente(String cpf, String nome, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){     
         int codigo= controladorClientes.getInstance().gerarCodigoCliente();
             Cliente clientenovo= new Cliente(nome,cpf,codigo,telefoneum,telefonedois,email,rua,numero,bairro,complemento);
             controladorClientes.getInstance().inserirCliente(clientenovo);

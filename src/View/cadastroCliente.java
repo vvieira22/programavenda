@@ -407,7 +407,7 @@ public class cadastroCliente extends javax.swing.JDialog {
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
        
-        controladorCadastroCLiente.getInstance().cadastrarCliente(campoNome.getText(),campoCpf.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
+        controladorCadastroCLiente.getInstance().cadastrarCliente(campoCpf.getText(),campoNome.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     private void campoCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfKeyPressed

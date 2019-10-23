@@ -21,6 +21,7 @@ public class ProgramaVenda {
     public static void main(String[] args) {
         controladorCadastroCLiente.getInstance().abrirJanela();
         controladorCadastroProduto.getInstance().abrirJanela();
+       
     }
    
     

@@ -22,9 +22,9 @@ public class ClienteDAO {
         return instance;      
     }
 
-    public void inserirClientenoBanco(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
+    public void inserirClientenoBanco(String cpf,String nome,int codigo, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
         
-        String sql="insert into cliente(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,complemento) values (?,?,?,?,?,?,?,?,?)";
+        String sql="insert into cliente(cpf,nome,codigo,telefoneum,telefonedois,email,rua,numero,bairro,complemento) values (?,?,?,?,?,?,?,?,?,?)";
             
         try {
             Connection conectar= conexao.getInstance().abrir();      
@@ -32,18 +32,19 @@ public class ClienteDAO {
             
             comando.setString(1,nome);
             comando.setString(2,cpf);
-            comando.setString(3,telefoneum);
-            comando.setString(4,telefonedois);
-            comando.setString(5,email);
-            comando.setString(6,rua);
-            comando.setInt(7,numero);
-            comando.setString(8,bairro);
-            comando.setString(9,complemento);  
+            comando.setInt(3,codigo);
+            comando.setString(4,telefoneum);
+            comando.setString(5,telefonedois);
+            comando.setString(6,email);
+            comando.setString(7,rua);
+            comando.setInt(8,numero);
+            comando.setString(9,bairro);
+            comando.setString(10,complemento);  
             
             comando.execute();
             conectar.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
         }      
     }
     
@@ -114,6 +115,7 @@ public class ClienteDAO {
             resultset.next(); 
             return resultset.getInt("quantidade");
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
             return -1;
         }         
     }

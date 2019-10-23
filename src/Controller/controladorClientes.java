@@ -44,10 +44,10 @@ public class controladorClientes {
         int numero=cliente.getNumero();
         String bairro=cliente.getBairro();
         String complemento=cliente.getComplemento();
-        
+        int codigo=gerarCodigoCliente();
         if(verificarCpfExistente(cliente.getCpf())==false){           
             try{                 
-                ClienteDAO.getInstance().inserirClientenoBanco(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,complemento);         
+                ClienteDAO.getInstance().inserirClientenoBanco(cpf,nome,codigo,telefoneum,telefonedois,email,rua,numero,bairro,complemento);         
                 clientes.add(cliente);               
                 return true;
             } catch(Exception e){
