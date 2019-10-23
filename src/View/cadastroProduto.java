@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControladorView.controladorCadastroProduto;
 import Controller.controladorClientes;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
@@ -63,7 +64,7 @@ public class cadastroProduto extends javax.swing.JDialog {
         imagemTelefoneDoisStatus1 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         campoQuantidade = new javax.swing.JTextField();
-        campoPreco = new javax.swing.JFormattedTextField();
+        campoPreco = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -91,6 +92,11 @@ public class cadastroProduto extends javax.swing.JDialog {
         jLabel12.setText("Campos com * são Obrigatórios !");
 
         botaoConfirmar.setText("Confirmar");
+        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConfirmarActionPerformed(evt);
+            }
+        });
 
         botaoCancelar.setText("Cancelar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,13 +110,6 @@ public class cadastroProduto extends javax.swing.JDialog {
         jLabel16.setText("Cadastro de Produto");
 
         jLabel21.setText("*");
-
-        campoPreco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00%"))));
-        campoPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPrecoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,9 +197,9 @@ public class cadastroProduto extends javax.swing.JDialog {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(campoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel4)
-                                            .addComponent(jLabel15))))
+                                            .addComponent(jLabel15)
+                                            .addComponent(campoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
@@ -232,9 +231,9 @@ public class cadastroProduto extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
-    private void campoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoPrecoActionPerformed
+    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
+      controladorCadastroProduto.getInstance().cadastrarProduto(Integer.parseInt(campoCodigo.getText()), Integer.parseInt(campoPreco.getText()), campoNome.getText(), Integer.parseInt(campoQuantidade.getText()));
+    }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +287,7 @@ public class cadastroProduto extends javax.swing.JDialog {
     private javax.swing.JButton botaoConfirmar;
     private javax.swing.JTextField campoCodigo;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JFormattedTextField campoPreco;
+    private javax.swing.JTextField campoPreco;
     private javax.swing.JTextField campoQuantidade;
     private javax.swing.JLabel imagemCpfStatus;
     private javax.swing.JLabel imagemTelefoneDoisStatus1;
