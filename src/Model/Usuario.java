@@ -5,16 +5,26 @@ public class Usuario {
     private String login;
     private String senha;
     private String perfil;
-
-    public Usuario(String nome, String login, String senha, String perfil) {
+    private int codigo;
+    
+    public Usuario(String nome, String login, String senha, String perfil,int codigo) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.perfil = perfil;
+        this.codigo=codigo;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
     public void setLogin(String login) {

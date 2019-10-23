@@ -7,6 +7,7 @@ package programavenda;
 
 import Controller.ControladorView.controladorCadastroCLiente;
 import Controller.ControladorView.controladorCadastroProduto;
+import Controller.ControladorView.controladorLogin;
 import Controller.controladorClientes;
 import Model.ClienteDAO;
 import View.cadastroCliente;
@@ -19,8 +20,7 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-        controladorCadastroCLiente.getInstance().abrirJanela();
-        controladorCadastroProduto.getInstance().abrirJanela();
+        controladorLogin.getInstance().abrirJanela();
        
     }
    

@@ -11,7 +11,7 @@ create table produto(codigo int primary key, preco float not null, nome varchar(
 quantidade int not null);
 
 create table usuario(login varchar(30) primary key, senha varchar(30) not null, 
-perfil varchar(30) not null, nome varchar(50) not null); 
+perfil varchar(30) not null, nome varchar(50) not null,codigo int not null); 
 
 create table venda(codigo int primary key, codigo_cliente int not null, data date not null,
 total float not null, forma_pagamento varchar(20) not null, foreign key(codigo_cliente) references cliente(codigo));

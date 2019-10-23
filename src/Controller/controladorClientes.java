@@ -23,16 +23,20 @@ public class controladorClientes {
     
     
     public boolean verificarCpfExistente(String cpf){
-        if(ClienteDAO.getInstance().verificarCpf(cpf)==true)
+        for(int i=0;i<quantidadeClientes;i++){
+            if(clientes.get(i).getCpf().equals(cpf))    
             return true;
+        }
         return false;
     }
 
     
     public void excluirCliente(String cpf){
-        if(verificarCpfExistente(cpf)==true)
-            ClienteDAO.getInstance().removerClientedoBanco("teste");       
-    }
+        for(int i=0;i<quantidadeClientes;i++){
+            if(clientes.get(i).getCpf().equals(cpf))
+                ClienteDAO.getInstance().removerClientedoBanco("teste");       
+        }       
+        }
     
     public boolean inserirCliente(Cliente cliente){
         String nome=cliente.getNome();

@@ -30,8 +30,8 @@ public class ClienteDAO {
             Connection conectar= conexao.getInstance().abrir();      
             PreparedStatement comando=conectar.prepareStatement(sql);
             
-            comando.setString(1,nome);
-            comando.setString(2,cpf);
+            comando.setString(1,cpf);
+            comando.setString(2,nome);
             comando.setInt(3,codigo);
             comando.setString(4,telefoneum);
             comando.setString(5,telefonedois);
