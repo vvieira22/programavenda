@@ -2,12 +2,14 @@ package Model;
 
 public class Venda {
     private int codigo;
+    private int codigoCliente;
     private String data;
     private float total;
     private String formaPagamento;
 
-    public Venda(int codigo, String data, float total, String formaPagamento) {
+    public Venda(int codigo, int codigoCliente, String data, float total, String formaPagamento) {
         this.codigo = codigo;
+        this.codigoCliente = codigoCliente;
         this.data = data;
         this.total = total;
         this.formaPagamento = formaPagamento;
@@ -15,6 +17,10 @@ public class Venda {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+    
+    public void setCodigoCliente(int codigoCliente) {
+        this.codigoCliente = codigoCliente;
     }
     
     public void setData(String data) {
@@ -31,6 +37,10 @@ public class Venda {
     
     public int getCodigo() {
         return codigo;
+    }
+    
+    public int getCodigoCliente() {
+        return codigoCliente;
     }
 
     public String getData() {

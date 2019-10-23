@@ -27,10 +27,10 @@ public class controladorProdutos {
     }
     
     public boolean inserirProduto(Produto produto) {
-        int codigo = produto.getCodigo();
         float preco = produto.getPreco();
         String nome = produto.getNome();
         int quantidade = produto.getQuantidade();
+        int codigo=gerarCodigoProduto();
         
         try{                 
                 ProdutoDAO.getInstance().inserirProdutonoBanco(codigo, preco, nome, quantidade);         
