@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package View;
 
 /**
  *
@@ -35,7 +35,7 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
         botaoPesquisar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         botaoCadastrar = new javax.swing.JButton();
-        botaoRemover = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -59,11 +59,11 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
         botaoPesquisar.setText("Pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jLabel2.setText("*Para remover uma venda, Selecione uma abaixo ");
+        jLabel2.setText("*Para detalhar uma venda, Selecione uma abaixo ");
 
         botaoCadastrar.setText("Cadastrar");
 
-        botaoRemover.setText("Remover");
+        jButton1.setText("Detalhes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,7 +85,7 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(botaoRemover))))
+                            .addComponent(jButton1))))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,7 +94,7 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrar)
-                    .addComponent(botaoRemover))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -108,7 +108,7 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1)))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 754, 659);
@@ -118,7 +118,7 @@ public class mostrarVenda extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoPesquisar;
-    private javax.swing.JButton botaoRemover;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

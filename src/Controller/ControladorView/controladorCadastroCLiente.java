@@ -3,7 +3,7 @@ package Controller.ControladorView;
 
 import Controller.controladorClientes;
 import Model.Cliente;
-import View.cadastroCliente;
+import View.Cadastro.cadastroCliente;
 import javax.swing.JOptionPane;
 
 public class controladorCadastroCLiente {

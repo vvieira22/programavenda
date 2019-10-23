@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package View;
 
 /**
  *
@@ -34,6 +34,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Venda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +83,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 896, 698);
+        setSize(new java.awt.Dimension(896, 698));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

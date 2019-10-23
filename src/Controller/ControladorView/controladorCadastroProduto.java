@@ -2,7 +2,7 @@ package Controller.ControladorView;
 
 import Controller.controladorProdutos;
 import Model.Produto;
-import View.cadastroProduto;
+import View.Cadastro.cadastroProduto;
 
 
 public class controladorCadastroProduto {

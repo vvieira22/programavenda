@@ -1,4 +1,4 @@
-package View;
+package View.Cadastro;
 
 import Controller.ControladorView.controladorCadastroVenda;
 import Controller.controladorClientes;

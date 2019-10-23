@@ -1,5 +1,6 @@
-package Model;
+package Model.DAO;
 
+import Model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

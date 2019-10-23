@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Produto;
-import Model.ProdutoDAO;
+import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
 
 

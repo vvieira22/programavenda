@@ -1,4 +1,4 @@
-package View;
+package View.Cadastro;
 
 import Controller.controladorClientes;
 import javax.swing.JFormattedTextField;

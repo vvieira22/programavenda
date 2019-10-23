@@ -1,5 +1,6 @@
-package Model;
+package Model.DAO;
 
+import Model.Usuario;
 import conexaoBanco.conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

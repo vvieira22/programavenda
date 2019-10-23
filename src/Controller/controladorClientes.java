@@ -1,9 +1,9 @@
 package Controller;
 
 import Model.Cliente;
-import Model.ClienteDAO;
+import Model.DAO.ClienteDAO;
 import Model.Venda;
-import Model.VendaDAO;
+import Model.DAO.VendaDAO;
 import java.util.ArrayList;
 
 public class controladorClientes {

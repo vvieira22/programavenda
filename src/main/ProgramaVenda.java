@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package programavenda;
+package main;
 
 import Controller.ControladorView.controladorCadastroCLiente;
 import Controller.ControladorView.controladorCadastroProduto;
 import Controller.ControladorView.controladorCadastroVenda;
 import Controller.ControladorView.controladorLogin;
 import Controller.controladorClientes;
-import Model.ClienteDAO;
-import View.cadastroCliente;
+import Model.DAO.ClienteDAO;
+import View.Cadastro.cadastroCliente;
 
 /**
  *

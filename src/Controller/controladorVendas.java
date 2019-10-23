@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Venda;
-import Model.VendaDAO;
+import Model.DAO.VendaDAO;
 import java.util.ArrayList;
 
 

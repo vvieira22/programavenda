@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Usuario;
-import Model.UsuarioDAO;
+import Model.DAO.UsuarioDAO;
 import java.util.ArrayList;
 /**
  *
