@@ -15,10 +15,11 @@ public class cadastroCliente extends javax.swing.JDialog {
     }
     
     public void setarImagemStatusCpf(){
+      
         if(controladorClientes.getInstance().verificarCpfExistente(campoCpf.getText())==true)
-            imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/errado2.png")));
+           imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/errado2.png")));
           else
-         imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/correto2.png")));
+            imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/correto2.png")));                
     }
     
     public static cadastroCliente getInstance(){
@@ -193,16 +194,6 @@ public class cadastroCliente extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        campoCpf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoCpfFocusLost(evt);
-            }
-        });
-        campoCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCpfActionPerformed(evt);
-            }
-        });
         campoCpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 campoCpfKeyPressed(evt);
@@ -386,7 +377,8 @@ public class cadastroCliente extends javax.swing.JDialog {
                 .addGap(14, 14, 14))
         );
 
-        setBounds(0, 0, 446, 606);
+        setSize(new java.awt.Dimension(446, 606));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroActionPerformed
@@ -409,32 +401,18 @@ public class cadastroCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoRuaActionPerformed
 
-    private void campoCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCpfActionPerformed
-
-    private void campoCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfKeyPressed
-  
-            setarImagemStatusCpf();
-    }//GEN-LAST:event_campoCpfKeyPressed
-
     private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEmailActionPerformed
-
-    private void campoCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCpfFocusLost
-          if(campoCpf.getText()!=null){ 
-          }
-          else{
-           imagemCpfStatus.setIcon(null);
-           imagemCpfStatus.revalidate();
-          }
-    }//GEN-LAST:event_campoCpfFocusLost
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
        
         controladorCadastroCLiente.getInstance().cadastrarCliente(campoNome.getText(),campoCpf.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
     }//GEN-LAST:event_botaoConfirmarActionPerformed
+
+    private void campoCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfKeyPressed
+       setarImagemStatusCpf();
+    }//GEN-LAST:event_campoCpfKeyPressed
 
     /**
      * @param args the command line arguments

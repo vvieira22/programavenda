@@ -2,7 +2,7 @@ create database programa_venda;
 
 use programa_venda;
 
-create table cliente(cpf varchar(15) primary key, codigo int unique not null, nome varchar(50) not null,
+create table cliente(nome varchar(50) not null,cpf varchar(15) primary key, codigo int unique not null,
 telefoneum varchar(50) not null, telefonedois varchar(50), email varchar(50) not null, 
 rua varchar(50) not null, numero int not null, bairro varchar(50) not null, 
 complemento varchar(50) not null); 

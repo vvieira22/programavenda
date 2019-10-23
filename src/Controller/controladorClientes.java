@@ -56,6 +56,12 @@ public class controladorClientes {
         }
         return false;
     }
+
+  
+
+    public int gerarCodigoCliente() {
+        return ClienteDAO.getInstance().quantidadeClientes()+1;
+    }
     
     
     

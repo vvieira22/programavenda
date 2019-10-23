@@ -4,6 +4,7 @@ public class Cliente {
        
     private String nome;
     private String cpf;
+    private int codigo;
     private String telefoneum;
     private String telefonedois;
     private String email;
@@ -12,9 +13,10 @@ public class Cliente {
     private String bairro;
     private String complemento;
 
-    public Cliente(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento) {
+    public Cliente(String nome, String cpf, int codigo,String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento) {
         this.nome = nome;
         this.cpf = cpf;
+        this.codigo=codigo;
         this.telefoneum = telefoneum;
         this.telefonedois = telefonedois;
         this.email = email;
@@ -22,6 +24,14 @@ public class Cliente {
         this.numero = numero;
         this.bairro = bairro;
         this.complemento = complemento;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public void setNome(String nome) {

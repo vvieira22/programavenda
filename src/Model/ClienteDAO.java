@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import conexaoBanco.conexao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class ClienteDAO {
@@ -68,11 +69,15 @@ public class ClienteDAO {
              PreparedStatement comando= conectar.prepareCall(sql);
              comando.setString(1,cpf);
              ResultSet resultset=comando.executeQuery(); 
-             resultset.next();
              
-             if(resultset.getString("cpf").equals(cpf))
-                 return true;          
+             if(resultset.next()){
+             
+             String cpfbanco= resultset.getString("cpf");
+             if(cpfbanco!=null && cpfbanco.equals(cpf))           
+                 return true;   
+             }
         } catch (Exception e) {
+              JOptionPane.showMessageDialog(null, e);
             return false;      
         }
            return false;  
@@ -88,7 +93,7 @@ public class ClienteDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Cliente cliente= new Cliente(resultset.getString("nome"), resultset.getString("cpf"), resultset.getString("telefoneum"),resultset.getString("telefonedois"), resultset.getString("email"), resultset.getString("rua"), resultset.getInt("numero"), resultset.getString("bairro"), resultset.getString("complemento"));
+                Cliente cliente= new Cliente(resultset.getString("nome"), resultset.getString("cpf"),quantidadeClientes()+1, resultset.getString("telefoneum"),resultset.getString("telefonedois"), resultset.getString("email"), resultset.getString("rua"), resultset.getInt("numero"), resultset.getString("bairro"), resultset.getString("complemento"));
                 listacliente.add(cliente);
             }
             conectar.close();
