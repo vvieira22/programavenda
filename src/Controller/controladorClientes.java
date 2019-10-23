@@ -11,7 +11,7 @@ public class controladorClientes {
     private int quantidadeClientes;
 
     private controladorClientes() {
-        clientes=ClienteDAO.getInstance().listarTodos();
+        clientes=ClienteDAO.getInstance().retornarTodos();
         quantidadeClientes=ClienteDAO.getInstance().quantidadeClientes();
     }
      
@@ -27,19 +27,28 @@ public class controladorClientes {
             return true;
         return false;
     }
-    
 
+    
     public void excluirCliente(String cpf){
         if(verificarCpfExistente(cpf)==true)
             ClienteDAO.getInstance().removerClientedoBanco("teste");       
     }
     
-    public boolean inserirCliente(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
-        if(verificarCpfExistente(cpf)==false){           
-            try{              
-                Cliente cliente=new Cliente(nome, cpf, telefoneum, telefonedois, email, rua, numero, bairro, complemento);               
-                clientes.add(cliente);
-                ClienteDAO.getInstance().inserirClientenoBanco(cliente);                
+    public boolean inserirCliente(Cliente cliente){
+        String nome=cliente.getNome();
+        String cpf=cliente.getCpf();
+        String telefoneum=cliente.getTelefoneum();      
+        String telefonedois=cliente.getTelefonedois();
+        String email=cliente.getEmail();
+        String rua=cliente.getRua();
+        int numero=cliente.getNumero();
+        String bairro=cliente.getBairro();
+        String complemento=cliente.getComplemento();
+        
+        if(verificarCpfExistente(cliente.getCpf())==false){           
+            try{                 
+                ClienteDAO.getInstance().inserirClientenoBanco(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,complemento);         
+                clientes.add(cliente);               
                 return true;
             } catch(Exception e){
                 return false;

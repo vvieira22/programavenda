@@ -2,7 +2,9 @@
 package Controller.ControladorView;
 
 import Controller.controladorClientes;
+import Model.Cliente;
 import View.cadastroCliente;
+import javax.swing.JOptionPane;
 
 public class controladorCadastroCLiente {
 
@@ -17,36 +19,18 @@ public class controladorCadastroCLiente {
         return instance;
     }
     
-    public boolean verificarSeTelefoneENumero(String telefone){
-        
+    public boolean verificarSeTelefoneENumero(String telefone){        
       int numero= Integer.parseInt(telefone);  
       return numero==(int)numero;     
-    
     }
     
-    public void cadastrarCliente(){
-        String nome=cadastroCliente.getInstance().getCampoNome();
-        String cpf=cadastroCliente.getInstance().getCampoCpf();
-        String telefoneum=cadastroCliente.getInstance().getCampoTelefoneUm();      
-        String telefonedois=cadastroCliente.getInstance().getCampoTelefoneDois();
-        String email=cadastroCliente.getInstance().getCampoEmail();
-        String rua=cadastroCliente.getInstance().getCampoRua();
-        int numero=cadastroCliente.getInstance().getCampoNumero();
-        String bairro=cadastroCliente.getInstance().getCampoBairro();
-        String complemento=cadastroCliente.getInstance().getCampoComplemento();
-
-      if(telefonedois==null){  
-        if(verificarSeTelefoneENumero(telefoneum)==true){
-        controladorClientes.getInstance().inserirCliente(null, null, null, null, null, null, numero, null, null);
+    public void cadastrarCliente(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
+        System.out.println("chegou aq");
+        JOptionPane.showMessageDialog(null, cpf+telefoneum+telefonedois);
+            Cliente clientenovo= new Cliente(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,complemento);
+            controladorClientes.getInstance().inserirCliente(clientenovo);
+ 
     }
-      }
-        else{      
-            if(verificarSeTelefoneENumero(telefoneum)==true || verificarSeTelefoneENumero(telefonedois)==true)
-                controladorClientes.getInstance().inserirCliente(null, null, null, null, null, null, numero, null, null);         
-            else
-              cadastroCliente.getInstance().setarImagemStatusCpf();    
-    }  
-     }
       
     
     public void abrirJanela(){

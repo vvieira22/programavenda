@@ -21,23 +21,23 @@ public class ClienteDAO {
         return instance;      
     }
 
-    public void inserirClientenoBanco(Cliente cliente){
+    public void inserirClientenoBanco(String nome, String cpf, String telefoneum, String telefonedois, String email, String rua, int numero, String bairro, String complemento){
         
-        String sql="insert into cliente(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,compelemnto) values (?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into cliente(nome,cpf,telefoneum,telefonedois,email,rua,numero,bairro,complemento) values (?,?,?,?,?,?,?,?,?)";
             
         try {
             Connection conectar= conexao.getInstance().abrir();      
             PreparedStatement comando=conectar.prepareStatement(sql);
             
-            comando.setString(1,cliente.getNome());
-            comando.setString(3,cliente.getCpf());
-            comando.setString(3,cliente.getTelefoneum());
-            comando.setString(4,cliente.getTelefonedois());
-            comando.setString(5,cliente.getEmail());
-            comando.setString(6,cliente.getRua());
-            comando.setInt(7,cliente.getNumero());
-            comando.setString(8,cliente.getBairro());
-            comando.setString(9,cliente.getComplemento());  
+            comando.setString(1,nome);
+            comando.setString(2,cpf);
+            comando.setString(3,telefoneum);
+            comando.setString(4,telefonedois);
+            comando.setString(5,email);
+            comando.setString(6,rua);
+            comando.setInt(7,numero);
+            comando.setString(8,bairro);
+            comando.setString(9,complemento);  
             
             comando.execute();
             conectar.close();
@@ -78,7 +78,7 @@ public class ClienteDAO {
            return false;  
         }
     
-    public ArrayList<Cliente> listarTodos(){
+    public ArrayList<Cliente> retornarTodos(){
         ArrayList<Cliente> listacliente= new ArrayList<>();
         String sql="select * from cliente";
         
@@ -113,6 +113,29 @@ public class ClienteDAO {
         }         
     }
      
+     public void atualizarCliente(String cpf,String telefoneum,String telefonedois,String email, String rua, int numero, String bairro, String complemento){
+         String sql="update cliente set telefoneum like ?, telefonedois like ?, email like ?, rua like ?, numero=?, bairro like ?, complemento like ? where cpf like ?";
+         
+         try {
+                      
+         Connection conectar = conexao.getInstance().abrir();
+          PreparedStatement comando= conectar.prepareStatement(sql); 
+          comando.setString(1,telefoneum);
+          comando.setString(2,telefonedois);
+          comando.setString(3,email);
+          comando.setString(4,rua);
+          comando.setInt(5,numero);
+          comando.setString(6,bairro);
+          comando.setString(7,complemento);
+          comando.setString(8,cpf);    
+          
+          comando.execute();
+          conectar.close();   
+          
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
      
+     }
      
 }

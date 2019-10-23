@@ -5,6 +5,7 @@
  */
 package programavenda;
 
+import Controller.ControladorView.controladorCadastroCLiente;
 import Controller.controladorClientes;
 import Model.ClienteDAO;
 import View.cadastroCliente;
@@ -17,8 +18,7 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-
-        controladorClientes.getInstance().excluirCliente("teste");
+        controladorCadastroCLiente.getInstance().abrirJanela();
     }
    
     

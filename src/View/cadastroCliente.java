@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControladorView.controladorCadastroCLiente;
 import Controller.controladorClientes;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
@@ -174,6 +175,11 @@ public class cadastroCliente extends javax.swing.JDialog {
         jLabel12.setText("Campos com * são Obrigatórios !");
 
         botaoConfirmar.setText("Confirmar");
+        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConfirmarActionPerformed(evt);
+            }
+        });
 
         botaoCancelar.setText("Cancelar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +214,7 @@ public class cadastroCliente extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campoTelefoneDois.setText("");
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 204, 153));
@@ -218,6 +225,7 @@ public class cadastroCliente extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campoTelefoneUm.setText("");
 
         jLabel21.setText("*");
 
@@ -422,6 +430,11 @@ public class cadastroCliente extends javax.swing.JDialog {
            imagemCpfStatus.revalidate();
           }
     }//GEN-LAST:event_campoCpfFocusLost
+
+    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
+       
+        controladorCadastroCLiente.getInstance().cadastrarCliente(campoNome.getText(),campoCpf.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
+    }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
