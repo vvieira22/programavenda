@@ -23,7 +23,7 @@ public class ProgramaVenda {
     public static void main(String[] args) {
         controladorLogin.getInstance().abrirJanela();
         controladorCadastroVenda.getInstance().abrirJanela();
-       
+        controladorCadastroCLiente.getInstance().abrirJanela();
     }
    
     

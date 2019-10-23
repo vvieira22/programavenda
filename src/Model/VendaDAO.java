@@ -20,16 +20,16 @@ public class VendaDAO {
             instance=new VendaDAO();
         return instance;      
     }
-    public void inserirVendanoBanco(int codigo, int codigo_cliente, String data, float total, String formaPagamento){
+    public void inserirVendanoBanco(int codigo, String cpf_cliente, String data, float total, String formaPagamento){
         
-        String sql="insert into venda(codigo, codigo_cliente, data, total, forma_pagamento) values (?,?,?,?,?)";
+        String sql="insert into venda(codigo, cpf_cliente, data, total, forma_pagamento) values (?,?,?,?,?)";
             
         try {
             Connection conectar= conexao.getInstance().abrir();      
             PreparedStatement comando=conectar.prepareStatement(sql);
             
             comando.setInt(1,codigo);
-            comando.setInt(2,codigo_cliente);
+            comando.setString(2,cpf_cliente);
             comando.setString(3,data);
             comando.setFloat(4,total);
             comando.setString(5,formaPagamento); 
@@ -51,7 +51,27 @@ public class VendaDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Venda venda= new Venda(quantidadeVendas()+1, resultset.getInt("codigoCliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("formaPagamento"));
+                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("formaPagamento"));
+                listaVenda.add(venda);
+            }
+            conectar.close();
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return listaVenda;
+    }
+    
+    public ArrayList<Venda> retornarPorCliente(int codigoCliente){
+        ArrayList<Venda> listaVenda= new ArrayList<>();
+        String sql="select * from venda where codigoCliente = ?";
+        
+        try {
+            Connection conectar= conexao.getInstance().abrir();      
+            PreparedStatement comando=conectar.prepareStatement(sql);
+            ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
+            
+            while(resultset.next()){
+                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("formaPagamento"));
                 listaVenda.add(venda);
             }
             conectar.close();

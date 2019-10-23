@@ -2,12 +2,15 @@ package Controller;
 
 import Model.Cliente;
 import Model.ClienteDAO;
+import Model.Venda;
+import Model.VendaDAO;
 import java.util.ArrayList;
 
 public class controladorClientes {
 
     private static controladorClientes instancia;
     private ArrayList<Cliente> clientes;
+    private ArrayList<Venda> vendas;
     private int quantidadeClientes;
 
     private controladorClientes() {
@@ -60,8 +63,7 @@ public class controladorClientes {
         }
         return false;
     }
-
-  
+    
 
     public int gerarCodigoCliente() {
         return ClienteDAO.getInstance().quantidadeClientes()+1;
