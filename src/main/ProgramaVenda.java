@@ -9,9 +9,13 @@ import Controller.ControladorView.controladorCadastroCLiente;
 import Controller.ControladorView.controladorCadastroProduto;
 import Controller.ControladorView.controladorCadastroVenda;
 import Controller.ControladorView.controladorLogin;
+import Controller.ControladorView.controladorMostrarProduto;
 import Controller.controladorClientes;
+import Controller.controladorProdutos;
 import Model.DAO.ClienteDAO;
 import View.Cadastro.cadastroCliente;
+import View.JanelaPrincipal;
+import View.mostrarProduto;
 
 /**
  *
@@ -21,9 +25,11 @@ public class ProgramaVenda {
 
     
     public static void main(String[] args) {
-        controladorLogin.getInstance().abrirJanela();
-        controladorCadastroVenda.getInstance().abrirJanela();
-        controladorCadastroCLiente.getInstance().abrirJanela();
+        
+   
+        JanelaPrincipal rs= new JanelaPrincipal();
+        rs.setVisible(true);
+         
     }
    
     

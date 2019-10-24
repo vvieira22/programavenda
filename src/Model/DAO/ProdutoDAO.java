@@ -70,7 +70,7 @@ public class ProdutoDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Produto produto= new Produto(quantidadeProdutos()+1, resultset.getFloat("preco"), resultset.getString("nome"), resultset.getInt("quantidade"));
+                Produto produto= new Produto(quantidadeProdutos()+1,resultset.getFloat("preco"),resultset.getString("nome"),resultset.getInt("quantidade"));
                 listaproduto.add(produto);
             }
             conectar.close();

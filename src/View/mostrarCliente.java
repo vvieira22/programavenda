@@ -5,29 +5,17 @@
  */
 package View;
 
-import Controller.ControladorView.controladorMostrarProduto;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
 /**
  *
  * @author vitor
  */
-public class mostrarProduto extends javax.swing.JInternalFrame {
+public class mostrarCliente extends javax.swing.JInternalFrame {
 
-   
-    public mostrarProduto() {     
+    /**
+     * Creates new form mostrarVenda
+     */
+    public mostrarCliente() {
         initComponents();
-        
-     
-        
-    }    
-    public void fazisso(){ 
-  
-    }
-
-    public TableModel pegarModeloTabela(){
-        return tabela.getModel();
     }
 
     /**
@@ -41,7 +29,7 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
 
         jToggleButton1 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         botaoPesquisar = new javax.swing.JButton();
@@ -54,30 +42,25 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(755, 296));
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Preço", "Quantidade", "Código"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabela);
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa-icone-4.png"))); // NOI18N
 
         botaoPesquisar.setText("Pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jLabel2.setText("*Para alterar e remover um produto, selecione um abaixo ");
+        jLabel2.setText("*Para alterar e remover um cliente, selecione um abaixo ");
 
         botaoCadastrar.setText("Cadastrar");
 
@@ -132,7 +115,7 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1)))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 754, 659);
@@ -147,8 +130,8 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

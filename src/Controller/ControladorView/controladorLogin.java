@@ -1,6 +1,6 @@
 package Controller.ControladorView;
 
-import Controller.ControladorUsuario;
+import Controller.controladorUsuario;
 import View.Login;
 import javax.swing.JOptionPane;
 
@@ -17,7 +17,7 @@ public class controladorLogin {
     }
     
     public boolean realizarLogin(String login, String senha){  
-        if(ControladorUsuario.getInstance().fazerLogin(login, senha)==true)
+        if(controladorUsuario.getInstance().fazerLogin(login, senha)==true)
             return true;     
         return false;
     }

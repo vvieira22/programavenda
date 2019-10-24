@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.ControladorUsuario;
+import Controller.controladorUsuario;
 import Controller.ControladorView.controladorLogin;
 import java.util.Arrays;
 import javax.swing.JOptionPane;

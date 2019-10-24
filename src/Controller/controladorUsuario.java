@@ -13,19 +13,19 @@ import java.util.ArrayList;
  * @author vitor
  */
 
-public class ControladorUsuario {
-    private static ControladorUsuario instance;
+public class controladorUsuario {
+    private static controladorUsuario instance;
     private ArrayList<Usuario> usuarios;
     private int quantidade;
     
-    private ControladorUsuario() {
+    private controladorUsuario() {
          usuarios=UsuarioDAO.getInstance().retornarTodos();
          quantidade=UsuarioDAO.getInstance().quantidadeUsuarios();
     }
 
-    public static synchronized ControladorUsuario getInstance(){
+    public static synchronized controladorUsuario getInstance(){
         if(instance==null)
-            instance=new ControladorUsuario();
+            instance=new controladorUsuario();
         return instance;
     }
  

@@ -43,5 +43,12 @@ public class controladorProdutos {
     public int gerarCodigoProduto() {
         return ProdutoDAO.getInstance().quantidadeProdutos()+1;
     }
+    public int retornarQuantidade(){
+        return quantidadeProdutos;
+    }
+    
+    public ArrayList<Produto> retornarProdutos(){
+        return produtos;
+    }
     
 }

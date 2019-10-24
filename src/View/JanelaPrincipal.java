@@ -5,6 +5,9 @@
  */
 package View;
 
+import Controller.ControladorView.controladorMostrarProduto;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author vitor
@@ -16,6 +19,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
      */
     public JanelaPrincipal() {
         initComponents();
+        controladorMostrarProduto c =  new controladorMostrarProduto();
+        c.retornarmostrarProduto().setVisible(true);
+        desktop.add(c.retornarmostrarProduto());
+
+        //try {
+         //   mostrarProduto.getInstance().setVisible(true);
+        //desktop.add(mostrarProduto.getInstance());
+       // } catch (Exception e) {
+        //    JOptionPane.showMessageDialog(null, "aAAAAA");
+        //}
+  
     }
 
     /**
@@ -31,7 +45,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         Produto = new javax.swing.JButton();
         Cliente = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -49,15 +63,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jButton4.setText("Usuários");
 
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 755, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 659, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(desktop)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -78,9 +102,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addComponent(jButton4)
                 .addContainerGap(180, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(desktop, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         setSize(new java.awt.Dimension(896, 698));
@@ -129,8 +151,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cliente;
     private javax.swing.JButton Produto;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JDesktopPane jDesktopPane1;
     // End of variables declaration//GEN-END:variables
 }
