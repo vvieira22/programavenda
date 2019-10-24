@@ -19,9 +19,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
      */
     public JanelaPrincipal() {
         initComponents();
-        controladorMostrarProduto c =  new controladorMostrarProduto();
-        c.retornarmostrarProduto().setVisible(true);
-        desktop.add(c.retornarmostrarProduto());
+        controladorMostrarProduto mostrarproduto =  new controladorMostrarProduto();
+        mostrarproduto.abrirJanela();
+        desktop.add(mostrarproduto.retornar());
 
         //try {
          //   mostrarProduto.getInstance().setVisible(true);

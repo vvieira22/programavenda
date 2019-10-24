@@ -6,29 +6,32 @@
 package View;
 
 import Controller.ControladorView.controladorMostrarProduto;
+import Controller.Tabelas.ModeloTabelaProduto;
+import Model.Produto;
+import View.Alterar.AlterarProduto;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author vitor
+ * @author vitor 
  */
 public class mostrarProduto extends javax.swing.JInternalFrame {
-
    
-    public mostrarProduto() {     
-        initComponents();
-        
-     
-        
-    }    
-    public void fazisso(){ 
+    private AlterarProduto alterarproduto; 
+    private ModeloTabelaProduto modeloalterarproduto;
+    
+    public mostrarProduto(AlterarProduto produto, ModeloTabelaProduto modelotabelaproduto) {     
+        initComponents();   
+        alterarproduto= produto;
+        this.modeloalterarproduto= modelotabelaproduto;
+    }   
+    
   
-    }
-
-    public TableModel pegarModeloTabela(){
-        return tabela.getModel();
-    }
+   public void setarModelo(ModeloTabelaProduto modelo){
+       tabela.setModel(modelo);
+   }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,6 +87,11 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
         botaoRemover.setText("Remover");
 
         jButton1.setText("Alterar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,6 +145,13 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 754, 659);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        Produto produto= modeloalterarproduto.obterProduto(tabela.getSelectedRow());
+        alterarproduto.setarNome(produto.getNome());
+        alterarproduto.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

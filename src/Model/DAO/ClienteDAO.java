@@ -95,7 +95,10 @@ public class ClienteDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Cliente cliente= new Cliente(resultset.getString("nome"), resultset.getString("cpf"),quantidadeClientes()+1, resultset.getString("telefoneum"),resultset.getString("telefonedois"), resultset.getString("email"), resultset.getString("rua"), resultset.getInt("numero"), resultset.getString("bairro"), resultset.getString("complemento"));
+                Cliente cliente= new Cliente(resultset.getString("nome"), 
+                                             resultset.getString("cpf"),
+                                             quantidadeClientes()+1, 
+                                             resultset.getString("telefoneum"),resultset.getString("telefonedois"), resultset.getString("email"), resultset.getString("rua"), resultset.getInt("numero"), resultset.getString("bairro"), resultset.getString("complemento"));
                 listacliente.add(cliente);
             }
             conectar.close();

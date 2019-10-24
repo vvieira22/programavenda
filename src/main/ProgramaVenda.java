@@ -14,6 +14,7 @@ import Controller.controladorClientes;
 import Controller.controladorProdutos;
 import Model.DAO.ClienteDAO;
 import View.Cadastro.cadastroCliente;
+import View.Cadastro.cadastroProduto;
 import View.JanelaPrincipal;
 import View.mostrarProduto;
 
@@ -26,9 +27,9 @@ public class ProgramaVenda {
     
     public static void main(String[] args) {
         
-   
-        JanelaPrincipal rs= new JanelaPrincipal();
-        rs.setVisible(true);
+       cadastroProduto.getInstance().setVisible(true);
+       JanelaPrincipal rs= new JanelaPrincipal();
+       rs.setVisible(true);
          
     }
    
