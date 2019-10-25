@@ -7,8 +7,11 @@ package View;
 
 import Controller.ControladorView.controladorMostrarProduto;
 import Controller.Tabelas.ModeloTabelaProduto;
+import Controller.controladorProdutos;
 import Model.Produto;
 import View.Alterar.AlterarProduto;
+import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -18,15 +21,21 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
     private AlterarProduto alterarproduto; 
     private ModeloTabelaProduto modeloalterarproduto;
     
-    public mostrarProduto(AlterarProduto produto, ModeloTabelaProduto modelotabelaproduto) {     
-        initComponents();   
-        alterarproduto= produto;
-        this.modeloalterarproduto= modelotabelaproduto;
+    public mostrarProduto() {     
+        initComponents();         
+        setarModelo();        
+        alterarproduto= new AlterarProduto(null, closable,retornarModelo());
+        modeloalterarproduto=new ModeloTabelaProduto(setarModelo());
     }   
-    
+    public JTable retornarModelo(){
+        return  tabela;
+    }
   
-   public void setarModelo(ModeloTabelaProduto modelo){
-       tabela.setModel(modelo);
+   public ArrayList<Produto> setarModelo(){
+       controladorProdutos controladorprodutos= new controladorProdutos();
+       ModeloTabelaProduto modelotabelaproduto= new ModeloTabelaProduto(controladorprodutos.retornarProdutos());
+       tabela.setModel(modelotabelaproduto);
+       return controladorprodutos.retornarProdutos();
    }
  
 
@@ -53,11 +62,6 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setPreferredSize(new java.awt.Dimension(755, 296));
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                formMouseMoved(evt);
-            }
-        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,6 +91,11 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
         botaoCadastrar.setText("Cadastrar");
 
         botaoRemover.setText("Remover");
+        botaoRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRemoverActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Alterar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,16 +158,18 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
         Produto produto= modeloalterarproduto.obterProduto(tabela.getSelectedRow());
         alterarproduto.setarNome(produto.getNome());
         alterarproduto.setarCodigo(produto.getCodigo());
         alterarproduto.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        setarModelo(modeloalterarproduto);
-    }//GEN-LAST:event_formMouseMoved
+    private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed
+        Produto produto= modeloalterarproduto.obterProduto(tabela.getSelectedRow());
+        controladorProdutos controler= new controladorProdutos();
+        controler.excluirProduto(produto.getCodigo());
+        setarModelo();
+    }//GEN-LAST:event_botaoRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

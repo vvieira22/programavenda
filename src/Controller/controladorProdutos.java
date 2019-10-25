@@ -4,8 +4,6 @@ import Model.Produto;
 import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
 
-
-
 public class controladorProdutos {
     
  
@@ -19,7 +17,7 @@ public class controladorProdutos {
     }
   
     public void excluirProduto(int codigo){
-            ProdutoDAO.getInstance().removerProdutodoBanco(1);       
+            ProdutoDAO.getInstance().removerProdutodoBanco(codigo);       
     }
     
     public boolean inserirProduto(Produto produto) {

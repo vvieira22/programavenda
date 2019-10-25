@@ -5,7 +5,14 @@
  */
 package View.Alterar;
 
+import Controller.Tabelas.ModeloTabelaProduto;
 import Controller.controladorProdutos;
+import Model.Produto;
+import View.mostrarProduto;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -15,13 +22,18 @@ import Controller.controladorProdutos;
 public class AlterarProduto extends javax.swing.JDialog {
 
     controladorProdutos controladorproduto;
+    boolean status;
+    JTable tabela;
     
-    public AlterarProduto(java.awt.Frame parent, boolean modal) {       
-        super(parent, modal);            
+    
+    
+    public AlterarProduto(java.awt.Frame parent, boolean modal,JTable tabela) {
+        super(parent, modal);                      
+        this.tabela=tabela;
         controladorproduto=new controladorProdutos();
         initComponents();  
+        setModal(true);
     }
-    
     public void setarNome(String nome){
      campoNome.setText(nome);
     }
@@ -46,7 +58,7 @@ public class AlterarProduto extends javax.swing.JDialog {
         campoCodigo = new javax.swing.JTextField();
         campoPreco = new javax.swing.JTextField();
         campoQuantidade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botaoConfirmar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,10 +92,10 @@ public class AlterarProduto extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoConfirmar.setText("Confirmar");
+        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoConfirmarActionPerformed(evt);
             }
         });
 
@@ -126,7 +138,7 @@ public class AlterarProduto extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(botaoConfirmar)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -148,7 +160,7 @@ public class AlterarProduto extends javax.swing.JDialog {
                     .addComponent(campoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botaoConfirmar)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -165,19 +177,32 @@ public class AlterarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_campoQuantidadeActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
+        campoPreco.setText("");
+        campoQuantidade.setText("");
     }//GEN-LAST:event_formWindowClosed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        campoPreco.setText("");
+        campoQuantidade.setText("");
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controladorproduto.atualizarProduto(Float.parseFloat(campoPreco.getText()), Integer.parseInt(campoQuantidade.getText()),Integer.parseInt(campoCodigo.getText()));
-        campoPreco.setText("");
-        campoQuantidade.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
 
+        try {
+            controladorproduto.atualizarProduto(Float.parseFloat(campoPreco.getText()), Integer.parseInt(campoQuantidade.getText()),Integer.parseInt(campoCodigo.getText()));
+        ArrayList<Produto> produto= new controladorProdutos().retornarProdutos();
+        ModeloTabelaProduto modelo= new ModeloTabelaProduto(produto);
+        tabela.setModel(modelo);
+        System.out.println(modelo.hashCode());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,"Um Erro Ocorreu, Revise os campos!");
+            return ;
+            }
+        dispose();
+        JOptionPane.showMessageDialog(rootPane,"Atualizado com Sucesso!");     
+    }//GEN-LAST:event_botaoConfirmarActionPerformed
+   
     /**
      * @param args the command line arguments
      */
@@ -208,7 +233,7 @@ public class AlterarProduto extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AlterarProduto dialog = new AlterarProduto(new javax.swing.JFrame(), true);
+                AlterarProduto dialog = new AlterarProduto(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -221,15 +246,16 @@ public class AlterarProduto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoConfirmar;
     private javax.swing.JTextField campoCodigo;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoPreco;
     private javax.swing.JTextField campoQuantidade;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -19,9 +19,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
      */
     public JanelaPrincipal() {
         initComponents();
-        controladorMostrarProduto mostrarproduto =  new controladorMostrarProduto();
-        mostrarproduto.abrirJanela();
-        desktop.add(mostrarproduto.retornar());
+        
 
         //try {
          //   mostrarProduto.getInstance().setVisible(true);
@@ -58,6 +56,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
 
         Produto.setText("Produto");
+        Produto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProdutoActionPerformed(evt);
+            }
+        });
 
         Cliente.setText("Cliente");
 
@@ -112,6 +115,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoActionPerformed
+        
+        controladorMostrarProduto mostrarproduto =  new controladorMostrarProduto();
+        mostrarproduto.abrirJanela();
+        desktop.add(mostrarproduto.retornar());
+    }//GEN-LAST:event_ProdutoActionPerformed
 
     /**
      * @param args the command line arguments

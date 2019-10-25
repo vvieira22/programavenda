@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 public class controladorMostrarProduto {
-    
+        
     ArrayList<Produto> produtos;
     ModeloTabelaProduto modelotabela;
     AlterarProduto alterarproduto;
@@ -19,16 +19,11 @@ public class controladorMostrarProduto {
     public controladorMostrarProduto() {
         produtos= new controladorProdutos().retornarProdutos();
         modelotabela= new ModeloTabelaProduto(produtos); 
-        alterarproduto=new AlterarProduto(null, true);
-        mostrarproduto= new mostrarProduto(alterarproduto,modelotabela);
-       
-        
-         setarModelo();
+
+        mostrarproduto= new mostrarProduto();
     }
     
-   public void setarModelo(){
-       mostrarproduto.setarModelo(this.modelotabela);
-   }
+  
    
    public void abrirJanela(){
        mostrarproduto.setVisible(true);
