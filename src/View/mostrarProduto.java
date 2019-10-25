@@ -12,10 +12,7 @@ import View.Alterar.AlterarProduto;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author vitor 
- */
+
 public class mostrarProduto extends javax.swing.JInternalFrame {
    
     private AlterarProduto alterarproduto; 
@@ -56,6 +53,11 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setPreferredSize(new java.awt.Dimension(755, 296));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,8 +152,13 @@ public class mostrarProduto extends javax.swing.JInternalFrame {
        
         Produto produto= modeloalterarproduto.obterProduto(tabela.getSelectedRow());
         alterarproduto.setarNome(produto.getNome());
+        alterarproduto.setarCodigo(produto.getCodigo());
         alterarproduto.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        setarModelo(modeloalterarproduto);
+    }//GEN-LAST:event_formMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

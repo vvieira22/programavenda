@@ -7,6 +7,7 @@ package Controller.Tabelas;
 
 import Model.Produto;
 import java.util.ArrayList;
+
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -19,7 +20,7 @@ public class ModeloTabelaProduto extends AbstractTableModel {
     private static final int colunaPreco=1;   
     private static final int colunaQuantidade=2;
     private static final int colunaCodigo=3;
-    private  String[] colunas= new String[]{"Nome","Preço","Quantidade","Código"};
+    private  String[] colunas= new String[]{"Nome","Preço","Quantidade","Codigo"};
     private ArrayList<Produto> produtos;
     
     public ModeloTabelaProduto(ArrayList<Produto> produto) {
@@ -31,9 +32,6 @@ public class ModeloTabelaProduto extends AbstractTableModel {
             return colunas[columnIndex];
         }
 
-    
-       
-    
     @Override
     public int getRowCount() {
         return produtos.size();

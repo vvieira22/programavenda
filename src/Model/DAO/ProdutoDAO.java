@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class ProdutoDAO {
     
     private static ProdutoDAO instance;
@@ -70,7 +71,8 @@ public class ProdutoDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Produto produto= new Produto(quantidadeProdutos()+1,resultset.getFloat("preco"),resultset.getString("nome"),resultset.getInt("quantidade"));
+                Produto produto= new Produto(resultset.getInt("codigo"),resultset.getFloat("preco"),resultset.getString("nome"),resultset.getInt("quantidade"));
+               
                 listaproduto.add(produto);
             }
             conectar.close();
@@ -95,21 +97,19 @@ public class ProdutoDAO {
         }  
     }
     
-    public void atualizarProduto(int codigo, float preco, String nome, int quantidade) {
-        String sql= "update produto set codigo=?, preco=?, nome like ?, quantidade=?";
+    public void atualizarProduto(float preco,int quantidade,int codigo) {
+        String sql= "update produto set preco=? ,quantidade=? where codigo=?";
         
         try {
                       
          Connection conectar = conexao.getInstance().abrir();
-          PreparedStatement comando= conectar.prepareStatement(sql); 
-          comando.setInt(1,codigo);
-          comando.setFloat(2,preco);
-          comando.setString(3,nome);
-          comando.setInt(4,quantidade);
+          PreparedStatement comando= conectar.prepareStatement(sql);           
+          comando.setFloat(1,preco);   
+          comando.setInt(2,quantidade);
+          comando.setInt(3,codigo);
           
           comando.execute();
-          conectar.close();   
-          
+          conectar.close();             
          } catch (Exception e) {
              e.printStackTrace();
          }

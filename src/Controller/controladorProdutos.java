@@ -5,23 +5,19 @@ import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
 
 
+
 public class controladorProdutos {
     
-    private static controladorProdutos instancia;
+ 
     private ArrayList<Produto> produtos;
     private int quantidadeProdutos;
     
-    private controladorProdutos() {
+   public controladorProdutos() {
+       quantidadeProdutos=ProdutoDAO.getInstance().quantidadeProdutos();    
         produtos=ProdutoDAO.getInstance().retornarTodos();
-        quantidadeProdutos=ProdutoDAO.getInstance().quantidadeProdutos();    
+       
     }
-    
-    public static synchronized controladorProdutos getInstance(){
-        if(instancia==null)
-            instancia=new controladorProdutos();
-        return instancia;
-    }
-    
+  
     public void excluirProduto(int codigo){
             ProdutoDAO.getInstance().removerProdutodoBanco(1);       
     }
@@ -49,6 +45,10 @@ public class controladorProdutos {
     
     public ArrayList<Produto> retornarProdutos(){
         return produtos;
+    }
+    
+    public void atualizarProduto(float preco,int quantidade,int codigo){
+        ProdutoDAO.getInstance().atualizarProduto(preco, quantidade,codigo);
     }
     
 }

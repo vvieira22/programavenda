@@ -197,7 +197,7 @@ public class cadastroProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
-      controladorCadastroProduto.getInstance().cadastrarProduto(Integer.parseInt(campoPreco.getText()), campoNome.getText(), Integer.parseInt(campoQuantidade.getText()));
+     // controladorCadastroProduto.getInstance().cadastrarProduto(Integer.parseInt(campoPreco.getText()), campoNome.getText(), Integer.parseInt(campoQuantidade.getText()));
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     private void campoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecoActionPerformed

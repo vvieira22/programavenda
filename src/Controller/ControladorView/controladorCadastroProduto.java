@@ -7,21 +7,17 @@ import View.Cadastro.cadastroProduto;
 
 public class controladorCadastroProduto {
     
-    private static controladorCadastroProduto instance;
+    private controladorProdutos controladorprodutos;
     
     private controladorCadastroProduto() {  
+        controladorprodutos= new controladorProdutos();
     }
     
-    public static controladorCadastroProduto getInstance(){
-        if(instance==null)
-            instance=new controladorCadastroProduto();
-        return instance;
-    }
     
     public void cadastrarProduto(float preco, String nome, int quantidade){
-            int codigo= controladorProdutos.getInstance().gerarCodigoProduto();
+            int codigo= controladorprodutos.gerarCodigoProduto();
             Produto produtonovo= new Produto(codigo, preco, nome, quantidade);
-            controladorProdutos.getInstance().inserirProduto(produtonovo);
+            controladorprodutos.inserirProduto(produtonovo);
  
     }
     

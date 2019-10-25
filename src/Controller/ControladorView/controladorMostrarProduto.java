@@ -7,8 +7,7 @@ import Model.Produto;
 import View.Alterar.AlterarProduto;
 import View.mostrarProduto;
 import java.util.ArrayList;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
+
 
 public class controladorMostrarProduto {
     
@@ -18,17 +17,19 @@ public class controladorMostrarProduto {
     mostrarProduto mostrarproduto;
     
     public controladorMostrarProduto() {
-       
-        alterarproduto=new AlterarProduto(null, true);
-        produtos=controladorProdutos.getInstance().retornarProdutos();     
+        produtos= new controladorProdutos().retornarProdutos();
         modelotabela= new ModeloTabelaProduto(produtos); 
-         mostrarproduto= new mostrarProduto(alterarproduto,modelotabela);
+        alterarproduto=new AlterarProduto(null, true);
+        mostrarproduto= new mostrarProduto(alterarproduto,modelotabela);
+       
+        
          setarModelo();
     }
     
    public void setarModelo(){
        mostrarproduto.setarModelo(this.modelotabela);
    }
+   
    public void abrirJanela(){
        mostrarproduto.setVisible(true);
    }
