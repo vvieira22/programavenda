@@ -8,26 +8,15 @@ package View;
 import Controller.ControladorView.controladorMostrarProduto;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author vitor
- */
 public class JanelaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JanelaPrincipal
-     */
+     controladorMostrarProduto mostrarproduto;
+     int quantidade;
+              
     public JanelaPrincipal() {
+        mostrarproduto= new controladorMostrarProduto();
         initComponents();
-        
-
-        //try {
-         //   mostrarProduto.getInstance().setVisible(true);
-        //desktop.add(mostrarProduto.getInstance());
-       // } catch (Exception e) {
-        //    JOptionPane.showMessageDialog(null, "aAAAAA");
-        //}
-  
+         
+          mostrarproduto.abrirJanela();
     }
 
     /**
@@ -46,7 +35,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jButton1.setText("Venda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,15 +54,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jButton4.setText("Usuários");
 
+        desktop.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 637, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,43 +74,69 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(desktop)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(169, 169, 169)
                 .addComponent(jButton1)
-                .addGap(64, 64, 64)
+                .addGap(53, 53, 53)
                 .addComponent(Produto)
                 .addGap(69, 69, 69)
                 .addComponent(Cliente)
                 .addGap(60, 60, 60)
                 .addComponent(jButton4)
-                .addContainerGap(180, Short.MAX_VALUE))
-            .addComponent(desktop, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(896, 698));
+        setSize(new java.awt.Dimension(896, 676));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+      desktop.removeAll();
+      desktop.revalidate();
+      desktop.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoActionPerformed
         
-        controladorMostrarProduto mostrarproduto =  new controladorMostrarProduto();
-        mostrarproduto.abrirJanela();
+        
+      desktop.removeAll();
+      desktop.revalidate();
+      desktop.repaint();
+      
+      
+       mostrarproduto.retornar().setBorder(null);
+       ((javax.swing.plaf.basic.BasicInternalFrameUI)mostrarproduto.retornar().getUI()).setNorthPane(null);
+    
+       
+       
+       if(desktop.getAllFrames().length==0){
+           desktop.add(mostrarproduto.retornar());
+       }
+       
+       else{    
+        desktop.remove(0);
         desktop.add(mostrarproduto.retornar());
+        desktop.revalidate();
+        desktop.repaint();
+       }
+
+        
+       
     }//GEN-LAST:event_ProdutoActionPerformed
 
     /**
