@@ -1,0 +1,80 @@
+
+package Controller.Tabelas;
+
+import Model.Produto;
+import Model.Venda;
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+/**
+ *
+ * @author vvieira
+ */
+public class ModeloTabelaVenda extends AbstractTableModel {
+
+    private static final int colunaData=1;
+    private static final int colunaTotal=2;
+    private static final int colunaCpf=0;      
+    
+    private  String[] colunas= new String[]{"Cpf Cliente","Data","Total"};
+    private ArrayList<Venda> venda;
+    
+    public ModeloTabelaVenda(ArrayList<Venda> venda) {
+        this.venda= venda;
+    }
+
+        @Override
+        public String getColumnName(int columnIndex){
+            return colunas[columnIndex];
+        }
+
+    @Override
+    public int getRowCount() {
+        return venda.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return colunas.length;
+    }
+
+    @Override
+        public boolean isCellEditable(int rowIndex,int columnIndex){
+            return false;
+        }
+   
+    @Override
+    public Object getValueAt(int row, int col){
+        Venda venda= this.venda.get(row);
+        switch(col){
+            case colunaCpf:
+                return venda.getCpfCliente();
+            case colunaData:
+                return venda.getData();
+            case colunaTotal:
+                return venda.getTotal()+"  R$";
+        }
+        return "";
+    }
+    
+    @Override
+     public void setValueAt(Object aValue, int row, int column){
+         Venda vendaa= venda.get(row);
+         switch(column){
+            case colunaData:
+              //  produto.setNome(produto.());
+            case colunaTotal:
+               // prodto.atualizarPreco(produto.getPreco());
+            case colunaCpf:
+           //       produto.atualizarQuantidade(produto.getQuantidade());
+            
+         }
+     } 
+     
+     public Venda obterProduto(int indice) {
+         return venda.get(indice);
+     }
+
+  
+}

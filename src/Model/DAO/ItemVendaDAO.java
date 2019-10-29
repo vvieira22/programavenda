@@ -7,37 +7,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
-import java.text.SimpleDateFormat;  
-import java.util.Date;  
 
-public class VendaDAO {
+public class ItemVendaDAO {
     
-    private static VendaDAO instance;
+    private static ItemVendaDAO instance;
     
-    private VendaDAO() {
+    private ItemVendaDAO() {
     }
     
-    public static synchronized VendaDAO getInstance(){
+    public static synchronized ItemVendaDAO getInstance(){
         if(instance==null)
-            instance=new VendaDAO();
+            instance=new ItemVendaDAO();
         return instance;      
     }
-
-    public void inserirVendanoBanco(int codigo, String cpf_cliente, String data, float total, String formaPagamento){
+    
+    public void inserirItemVendanoBanco(int codigo_venda, int codigo_produto, int quantidade , float preco,float precototal){
         
-        String sql="insert into venda(codigo, cpf_cliente, data, total, forma_pagamento) values (?,?,?,?,?)";
+        String sql="insert into item_venda(codigo_venda, codigo_produto, quantidade, preco ,total_item) values (?,?,?,?,?)";
             
         try {
             Connection conectar= conexao.getInstance().abrir();      
             PreparedStatement comando=conectar.prepareStatement(sql);
             
-            comando.setInt(1,codigo);
-            comando.setString(2,cpf_cliente);
-            comando.setString(3,data);
-            comando.setFloat(4,total);
-            comando.setString(5,formaPagamento); 
+            comando.setInt(1,codigo_venda);
+            comando.setInt(2,codigo_produto);
+            comando.setInt(3,quantidade);
+            comando.setFloat(4,preco);
+            comando.setFloat(5,precototal); 
             
             comando.execute();
             conectar.close();
@@ -56,7 +53,7 @@ public class VendaDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("forma_pagamento"));
+                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("formaPagamento"));
                 listaVenda.add(venda);
             }
             conectar.close();
@@ -76,7 +73,7 @@ public class VendaDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("forma_pagamento"));
+                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("formaPagamento"));
                 listaVenda.add(venda);
             }
             conectar.close();
@@ -91,8 +88,7 @@ public class VendaDAO {
         
         try {
             Connection conectar = conexao.getInstance().abrir();
-            PreparedStatement comando= conectar.prepareCall(sql);
-            
+            PreparedStatement comando= conectar.prepareCall(sql);          
             ResultSet resultset=comando.executeQuery(); 
             resultset.next(); 
             return resultset.getInt("quantidade");
@@ -100,6 +96,5 @@ public class VendaDAO {
             JOptionPane.showMessageDialog(null, e);
             return -1;
         }         
-    }
-    
+    }   
 }

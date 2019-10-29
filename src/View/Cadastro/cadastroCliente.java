@@ -1,7 +1,6 @@
 package View.Cadastro;
 
-import Controladores.ControladoresView.controladorCadastroCLiente;
-import Controladores.controladorClientes;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
@@ -16,10 +15,10 @@ public class cadastroCliente extends javax.swing.JDialog {
     
     public void setarImagemStatusCpf(){
       
-        if(controladorClientes.getInstance().verificarCpfExistente(campoCpf.getText())==true)
-           imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/errado2.png")));
-          else
-            imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/correto2.png")));                
+        ///if(controladorClientes.getInstance().verificarCpfExistente(campoCpf.getText())==true)
+          //// imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/errado2.png")));
+          // else
+          ///////  imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/correto2.png")));                
     }
     
     public static cadastroCliente getInstance(){
@@ -407,7 +406,7 @@ public class cadastroCliente extends javax.swing.JDialog {
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
        
-        controladorCadastroCLiente.getInstance().cadastrarCliente(campoCpf.getText(),campoNome.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
+        //controladorCadastroCLiente.getInstance().cadastrarCliente(campoCpf.getText(),campoNome.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     private void campoCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfKeyPressed
