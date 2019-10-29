@@ -21,6 +21,9 @@ public class VendaDAO {
             instance=new VendaDAO();
         return instance;      
     }
+    
+    
+    
     public void inserirVendanoBanco(int codigo, String cpf_cliente, String data, float total, String formaPagamento){
         
         String sql="insert into venda(codigo, cpf_cliente, data, total, forma_pagamento) values (?,?,?,?,?)";

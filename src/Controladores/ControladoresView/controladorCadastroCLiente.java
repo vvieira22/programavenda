@@ -1,7 +1,7 @@
 
-package Controller.ControladorView;
+package Controladores.ControladoresView;
 
-import Controller.controladorClientes;
+import Controladores.controladorClientes;
 import Model.Cliente;
 import View.Cadastro.cadastroCliente;
 import javax.swing.JOptionPane;

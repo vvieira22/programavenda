@@ -5,8 +5,8 @@
  */
 package View;
 
-import Controller.controladorUsuario;
-import Controller.ControladorView.controladorLogin;
+import Controladores.controladorUsuario;
+import Controladores.ControladoresView.controladorLogin;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 

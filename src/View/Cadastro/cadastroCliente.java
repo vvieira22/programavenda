@@ -1,7 +1,7 @@
 package View.Cadastro;
 
-import Controller.ControladorView.controladorCadastroCLiente;
-import Controller.controladorClientes;
+import Controladores.ControladoresView.controladorCadastroCLiente;
+import Controladores.controladorClientes;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 

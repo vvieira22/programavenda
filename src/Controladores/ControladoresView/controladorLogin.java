@@ -1,6 +1,6 @@
-package Controller.ControladorView;
+package Controladores.ControladoresView;
 
-import Controller.controladorUsuario;
+import Controladores.controladorUsuario;
 import View.Login;
 import javax.swing.JOptionPane;
 

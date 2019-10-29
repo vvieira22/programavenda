@@ -1,4 +1,4 @@
-package Controller;
+package Controladores;
 
 import Model.Cliente;
 import Model.DAO.ClienteDAO;

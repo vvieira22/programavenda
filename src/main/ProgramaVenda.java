@@ -5,18 +5,14 @@
  */
 package main;
 
-import Controller.ControladorView.controladorCadastroCLiente;
-import Controller.ControladorView.controladorCadastroProduto;
-import Controller.ControladorView.controladorCadastroVenda;
-import Controller.ControladorView.controladorLogin;
-import Controller.ControladorView.controladorMostrarProduto;
-import Controller.controladorClientes;
-import Controller.controladorProdutos;
+import Controladores.ControladoresView.controladorCadastroCLiente;
+import Controladores.ControladoresView.controladorLogin;
+import Controladores.controladorClientes;
+import Controladores.ControladoresDAO.controladorProdutosDAO;
 import Model.DAO.ClienteDAO;
 import View.Cadastro.cadastroCliente;
 import View.Cadastro.cadastroProduto;
 import View.JanelaPrincipal;
-import View.mostrarProduto;
 
 /**
  *
@@ -27,7 +23,7 @@ public class ProgramaVenda {
     
     public static void main(String[] args) {
         
-       cadastroProduto.getInstance().setVisible(true);
+       
        JanelaPrincipal rs= new JanelaPrincipal();
        rs.setVisible(true);
          

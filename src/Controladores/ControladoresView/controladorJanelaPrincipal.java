@@ -1,5 +1,5 @@
 
-package Controller.ControladorView;
+package Controladores.ControladoresView;
 
 
 public class controladorJanelaPrincipal {

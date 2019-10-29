@@ -83,7 +83,7 @@ public class ProdutoDAO {
     }
     
     public int quantidadeProdutos() {
-        String sql= "select count(*) as quantidade from produto";
+        String sql= "select MAX(codigo) as quantidade from produto";
         
         try {
             Connection conectar = conexao.getInstance().abrir();
