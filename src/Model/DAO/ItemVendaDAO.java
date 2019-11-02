@@ -30,7 +30,7 @@ public class ItemVendaDAO {
             Connection conectar= conexao.getInstance().abrir();      
             PreparedStatement comando=conectar.prepareStatement(sql);
             
-            comando.setInt(1,codigo_venda);
+            comando.setInt(1,1);
             comando.setInt(2,codigo_produto);
             comando.setInt(3,quantidade);
             comando.setFloat(4,preco);

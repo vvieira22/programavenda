@@ -55,7 +55,7 @@ public class VendaDAO {
             ResultSet resultset=comando.executeQuery(); //vai pegar uma tabela e armazenar no resultset
             
             while(resultset.next()){
-                Venda venda= new Venda(quantidadeVendas()+1, resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("forma_pagamento"));
+                Venda venda= new Venda(Integer.parseInt(resultset.getString("codigo")), resultset.getString("cpf_cliente"), resultset.getString("data"), resultset.getFloat("total"), resultset.getString("forma_pagamento"));
                 listaVenda.add(venda);
             }
             conectar.close();

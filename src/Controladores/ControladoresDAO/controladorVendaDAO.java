@@ -17,7 +17,7 @@ public class controladorVendaDAO {
     
     public void inserirItensVenda(Venda venda,ArrayList<ItemVenda> itensvenda){
         for(int i=0;i<itensvenda.size();i++){
-            ItemVendaDAO.getInstance().inserirItemVendanoBanco(venda.getCodigo(), 
+            ItemVendaDAO.getInstance().inserirItemVendanoBanco(1, 
                     itensvenda.get(i).getCodigo_produto(), 
                     itensvenda.get(i).getQuantidade(), 
                     itensvenda.get(i).getPreco(), 

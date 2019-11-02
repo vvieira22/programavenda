@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class ProdutoDAO {
@@ -81,6 +82,29 @@ public class ProdutoDAO {
         }
         return listaproduto;
     }
+    public boolean verificarSeProdutoJaExiste(int id){
+        String sql= "select count(nome) from produto where codigo=?";
+        
+        try {
+            Connection conectar= conexao.getInstance().abrir();   
+            PreparedStatement comando= conectar.prepareStatement(sql);
+            
+            comando.setInt(1,id);
+            
+            ResultSet resultset=comando.executeQuery();
+            
+             resultset.next(); 
+            if(Integer.parseInt(resultset.getString("count(nome)"))>=1)
+            return true;
+            else
+                return false;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;
+    }  
+    
+    
     
     public int quantidadeProdutos() {
         String sql= "select MAX(codigo) as quantidade from produto";

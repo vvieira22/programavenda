@@ -19,8 +19,6 @@ public class View_Venda extends javax.swing.JInternalFrame {
     
     public View_Venda() {
         initComponents();   
-        controladorvendadao=new controladorVendaDAO();
-        ModeloTabelaVenda modelotabelavenda=new ModeloTabelaVenda(controladorvendadao.retornarVendas());
         setarModeloTabela();
     }
     
@@ -146,9 +144,9 @@ public class View_Venda extends javax.swing.JInternalFrame {
         setBounds(0, 0, 754, 659);
     }// </editor-fold>//GEN-END:initComponents
     public void setarModeloTabela(){     
+        controladorvendadao=new controladorVendaDAO();
         ModeloTabelaVenda modelotabelavenda=new ModeloTabelaVenda(controladorvendadao.retornarVendas());
-        tabela.setModel(modelotabelavenda);  
-        
+        tabela.setModel(modelotabelavenda);        
     }
     
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
