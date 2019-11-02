@@ -9,9 +9,9 @@ import javax.swing.JTable;
 
 
 public class cadastroProduto extends javax.swing.JDialog {
-    controladorProdutosDAO controladorprodutodao;
     JTable tabela;
     ModeloTabelaProduto modelotabelaproduto;
+    controladorProdutosDAO controladorprodutodao;
        
     public cadastroProduto(controladorProdutosDAO controladorprodutosdao,JTable tabela){     
         initComponents();  

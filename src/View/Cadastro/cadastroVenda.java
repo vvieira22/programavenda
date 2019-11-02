@@ -2,28 +2,34 @@ package View.Cadastro;
 
 
 import Controladores.ControladoresDAO.controladorVendaDAO;
+import Controller.Tabelas.ModeloTabelaVenda;
+import Model.DAO.VendaDAO;
 import Model.Venda;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class cadastroVenda extends javax.swing.JDialog {
     
-    
-    
-    public cadastroVenda(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    JTable tabela;
+    ModeloTabelaVenda modelotabelavenda;
+    controladorVendaDAO controladorvendadaoo;
+       
+    public cadastroVenda(JTable tabela,ModeloTabelaVenda modelotabelavenda) {
         initComponents();    
-    }
-    
-    public String getCampoCodigoCliente() {
-        return campoCpfCliente.getText();
-    }
-
-   
-
-    public String getCampoTotal() {
-        return campoTotal.getText();
-    }
+         controladorvendadaoo=new controladorVendaDAO();
+        this.tabela=tabela;            
+    }   
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,9 +56,11 @@ public class cadastroVenda extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         botaoRemover = new javax.swing.JButton();
         botaoAdicionar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationByPlatform(true);
+        setModal(true);
         setResizable(false);
 
         jLabel2.setText("Cpf Cliente:");
@@ -123,10 +131,10 @@ public class cadastroVenda extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cartão Crédito", "Cartão Débido" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cartão Crédito", "Cartão Débido" }));
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboBoxActionPerformed(evt);
             }
         });
 
@@ -142,10 +150,6 @@ public class cadastroVenda extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imagemCpfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botaoCancelar)
@@ -153,7 +157,7 @@ public class cadastroVenda extends javax.swing.JDialog {
                 .addComponent(botaoConfirmar)
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +174,7 @@ public class cadastroVenda extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(63, 63, 63))
                             .addComponent(jLabel1)
                             .addComponent(jLabel12)
@@ -181,6 +185,10 @@ public class cadastroVenda extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(101, 101, 101))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,13 +197,13 @@ public class cadastroVenda extends javax.swing.JDialog {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imagemCpfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botaoRemover)
                         .addComponent(botaoAdicionar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
@@ -221,26 +229,45 @@ public class cadastroVenda extends javax.swing.JDialog {
                             .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))))
         );
 
-        setBounds(0, 0, 444, 612);
+        setBounds(0, 0, 464, 612);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_botaoCancelarActionPerformed
+  
+    public void atualizarLista(){  
+        modelotabelavenda= new ModeloTabelaVenda(controladorvendadaoo.retornarVendas());     
+    }
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
-        controladorVendaDAO controladorvendadao= new controladorVendaDAO();
-        if(campoCpfCliente.getText().equals("   .   .   -  ")){}
-            
-        System.out.println(campoCpfCliente.getText());
-        Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+2,campoCpfCliente.getText(), "1999/10/10", 10, "cartao");
-            
+
+        if(campoCpfCliente.getText().equals("   .   .   -  ")){
+        try {  
+            Venda venda= new Venda(controladorvendadaoo.retornarQuantidadeVenda()+1,"Nao Informado", null, 0/*Float.parseFloat(campoTotal.getText())*/, comboBox.getSelectedItem().toString());
+            controladorvendadaoo.inserirVenda(venda);
+            atualizarLista();  
+            tabela.setModel(modelotabelavenda);
+        } catch (Exception e) {             
+            JOptionPane.showMessageDialog(rootPane,e);
+            }
+        }
+        /*    
+        else{
+            try {
+            Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), comboBox.getName());
+            controladorvendadao.inserirVenda(venda);
+            atualizarLista();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,"Por favor revise os campos !!");
+            }
+        }
+        */
         
-        controladorvendadao.inserirVenda(venda);
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     private void campoCpfClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfClienteKeyPressed
@@ -252,9 +279,9 @@ public class cadastroVenda extends javax.swing.JDialog {
        cadastroitemvenda.setVisible(true);
     }//GEN-LAST:event_botaoAdicionarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,18 +326,7 @@ public class cadastroVenda extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                cadastroVenda dialog = new cadastroVenda(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+       
     }
 
     
@@ -322,8 +338,8 @@ public class cadastroVenda extends javax.swing.JDialog {
     private javax.swing.JButton botaoRemover;
     private javax.swing.JFormattedTextField campoCpfCliente;
     private javax.swing.JTextField campoTotal;
+    private javax.swing.JComboBox comboBox;
     private javax.swing.JLabel imagemCpfStatus;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;

@@ -7,17 +7,9 @@ import java.util.ArrayList;
 
 public class ControladorVendas {
   private ArrayList<ItemVenda> itensvenda; 
-  private cadastroVenda cadastrovenda;
-  private controladorVendaDAO controladorvendadao;
-    
-public void abrirJanelaCadastroItemVenda(){
-    cadastrovenda=new cadastroVenda(null, true);
-    cadastrovenda.setVisible(true);
-}
 
-public void fecharJanelaCadastroItemVenda(){
-    cadastrovenda.dispose();
-}
+  private controladorVendaDAO controladorvendadao;
+   
 
  public void inserirNaArrayItemVenda(int codigo_produto,int quantidade,float preco, float totalItem){          
      ItemVenda itemvenda= new ItemVenda(codigo_produto, quantidade, preco, totalItem);

@@ -8,16 +8,19 @@ import Controller.Tabelas.ModeloTabelaVenda;
 import Model.Produto;
 import View.Alterar.AlterarProduto;
 import View.Cadastro.cadastroProduto;
+import View.Cadastro.cadastroVenda;
 import javax.swing.JOptionPane;
 
 
 public class View_Venda extends javax.swing.JInternalFrame {
-    private controladorProdutosDAO controladorprodutosdao;
-    private cadastroProduto cadastroproduto;    
-    private ModeloTabelaVenda modelotabelavenda;
+    public controladorVendaDAO controladorvendadao;
+    ModeloTabelaVenda modelotabelavenda;
+
     
     public View_Venda() {
-         initComponents();      
+        initComponents();   
+        controladorvendadao=new controladorVendaDAO();
+        ModeloTabelaVenda modelotabelavenda=new ModeloTabelaVenda(controladorvendadao.retornarVendas());
         setarModeloTabela();
     }
     
@@ -35,6 +38,8 @@ public class View_Venda extends javax.swing.JInternalFrame {
         botaoCadastrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -58,7 +63,7 @@ public class View_Venda extends javax.swing.JInternalFrame {
         botaoPesquisar.setText("Pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jLabel2.setText("*Para Detalhar uma venda, por favor selecione uma abaixo. ");
+        jLabel2.setText("*Para detalhar uma venda, por favor selecione uma abaixo. ");
 
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +76,10 @@ public class View_Venda extends javax.swing.JInternalFrame {
 
         jButton2.setText("Remover");
         jButton2.setEnabled(false);
+
+        jLabel3.setText("AM- Manhã");
+
+        jLabel4.setText("PM- Noite");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +102,11 @@ public class View_Venda extends javax.swing.JInternalFrame {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))))
                 .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -107,36 +120,40 @@ public class View_Venda extends javax.swing.JInternalFrame {
                     .addComponent(botaoCadastrar)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoPesquisar)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botaoPesquisar)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel1))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1)))
-                .addGap(0, 31, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 754, 659);
     }// </editor-fold>//GEN-END:initComponents
-    public void setarModeloTabela(){
-        controladorVendaDAO controladorvendadao=new controladorVendaDAO();
-        modelotabelavenda=new ModeloTabelaVenda(controladorvendadao.retornarVendas());
-        tabela.setModel(modelotabelavenda);
+    public void setarModeloTabela(){     
+        ModeloTabelaVenda modelotabelavenda=new ModeloTabelaVenda(controladorvendadao.retornarVendas());
+        tabela.setModel(modelotabelavenda);  
+        
     }
     
-    
-    
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        ControladorVendas controladorvendas= new ControladorVendas();
-        controladorvendas.abrirJanelaCadastroItemVenda();
+         cadastroVenda cadastrovenda= new cadastroVenda(tabela,modelotabelavenda);
+        cadastrovenda.setVisible(true);
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
 
@@ -147,6 +164,8 @@ public class View_Venda extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
