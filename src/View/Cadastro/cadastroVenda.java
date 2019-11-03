@@ -2,7 +2,7 @@ package View.Cadastro;
 
 
 import Controladores.ControladoresDAO.controladorVendaDAO;
-import Controller.Tabelas.ModeloTabelaVenda;
+import Model.Tabelas.ModeloTabelaVenda;
 import Model.DAO.VendaDAO;
 import Model.Venda;
 import java.sql.SQLException;

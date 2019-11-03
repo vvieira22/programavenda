@@ -1,5 +1,5 @@
 
-package Controller.Tabelas;
+package Model.Tabelas;
 
 import Model.Venda;
 import java.util.ArrayList;

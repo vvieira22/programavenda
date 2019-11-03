@@ -1,7 +1,7 @@
 package View.Cadastro;
 
-import Controladores.ControladoresDAO.controladorProdutosDAO;
-import Controller.Tabelas.ModeloTabelaProduto;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
+import Model.Tabelas.ModeloTabelaProduto;
 
 
 import javax.swing.JOptionPane;
@@ -11,9 +11,9 @@ import javax.swing.JTable;
 public class cadastroProduto extends javax.swing.JDialog {
     JTable tabela;
     ModeloTabelaProduto modelotabelaproduto;
-    controladorProdutosDAO controladorprodutodao;
+    controladorProdutoDAO controladorprodutodao;
        
-    public cadastroProduto(controladorProdutosDAO controladorprodutosdao,JTable tabela){     
+    public cadastroProduto(controladorProdutoDAO controladorprodutosdao,JTable tabela){     
         initComponents();  
         this.controladorprodutodao= controladorprodutosdao;        
         this.tabela=tabela;               

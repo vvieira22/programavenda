@@ -6,7 +6,7 @@
 package main;
 
 
-import Controladores.ControladoresDAO.controladorProdutosDAO;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Model.DAO.ClienteDAO;
 import View.Cadastro.cadastroCliente;
 import View.Cadastro.cadastroProduto;

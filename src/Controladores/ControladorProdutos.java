@@ -1,18 +1,18 @@
 package Controladores;
 
-import Controladores.ControladoresDAO.controladorProdutosDAO;
-import Controller.Tabelas.ModeloTabelaProduto;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
+import Model.Tabelas.ModeloTabelaProduto;
 import View.View_Produto;
 
 
 public class ControladorProdutos {
     
-    private controladorProdutosDAO controladorprodutosdao;
+    private controladorProdutoDAO controladorprodutosdao;
     private View.View_Produto viewproduto;
     private ModeloTabelaProduto modelotabelaproduto;
     
     public ControladorProdutos() {       
-        controladorprodutosdao= new controladorProdutosDAO();
+        controladorprodutosdao= new controladorProdutoDAO();
         modelotabelaproduto= new ModeloTabelaProduto(controladorprodutosdao.retornarProdutos());
         viewproduto= new View_Produto(controladorprodutosdao);
     }   

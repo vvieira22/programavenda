@@ -4,9 +4,9 @@ import Model.Produto;
 import Model.DAO.ProdutoDAO;
 import java.util.ArrayList;
 
-public class controladorProdutosDAO {
+public class controladorProdutoDAO {
        
-    public controladorProdutosDAO() {        
+    public controladorProdutoDAO() {        
     }
   
     public void excluirProduto(int codigo){

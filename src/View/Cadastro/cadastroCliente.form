@@ -79,48 +79,47 @@
                                   <Component id="imagemTelefoneDoisStatus1" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="campoEmail" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel17" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                                          <Component id="jLabel19" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                                          <Component id="jLabel20" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
-                                      <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel17" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="campoNumero" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="campoComplemento" alignment="0" min="-2" pref="214" max="-2" attributes="0"/>
                                   <Component id="campoBairro" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                                   <Component id="campoRua" min="-2" pref="263" max="-2" attributes="0"/>
+                                  <Component id="campoComplemento" min="-2" pref="214" max="-2" attributes="0"/>
+                                  <Component id="campoEmail" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="botaoConfirmar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="botaoConfirmar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="botaoCancelar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -141,7 +140,7 @@
               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -169,6 +168,7 @@
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -176,34 +176,45 @@
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="campoTelefoneDois" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="imagemTelefoneDoisStatus1" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="imagemTelefoneDoisStatus1" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="campoEmail" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoEmail" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="jLabel7" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="campoRua" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="campoNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="campoBairro" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -211,11 +222,6 @@
                           <Component id="campoComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>

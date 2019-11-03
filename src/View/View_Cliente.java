@@ -1,21 +1,21 @@
 package View;
 
+import Controladores.ControladoresDAO.controladorClientesDAO;
 import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Model.Tabelas.ModeloTabelaProduto;
 import Model.Produto;
 import View.Alterar.AlterarProduto;
+import View.Cadastro.cadastroCliente;
 import View.Cadastro.cadastroProduto;
 
 
-public class View_Produto extends javax.swing.JInternalFrame {
+public class View_Cliente extends javax.swing.JInternalFrame {
     private controladorProdutoDAO controladorprodutosdao;
     private cadastroProduto cadastroproduto;    
     private ModeloTabelaProduto modelotabelaproduto;
     
-    public View_Produto(controladorProdutoDAO controladorprodutosdao) {
-         initComponents();      
-         this.controladorprodutosdao=controladorprodutosdao;
-         this.modelotabelaproduto= modelotabelaproduto;       
+    public View_Cliente(controladorClientesDAO controladorclientessdao) {
+         initComponents();            
          setarModeloTabela();
     }  
        
@@ -61,7 +61,7 @@ public class View_Produto extends javax.swing.JInternalFrame {
         botaoPesquisar.setText("Pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jLabel2.setText("*Para alterar e remover um produto, selecione um abaixo ");
+        jLabel2.setText("*Para alterar e remover um cliente, selecione um abaixo ");
 
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,8 +138,8 @@ public class View_Produto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        cadastroproduto = new cadastroProduto(controladorprodutosdao,tabela);
-        cadastroproduto.setVisible(true);
+        cadastroCliente cadastro= new cadastroCliente();
+        cadastro.setVisible(true);
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed

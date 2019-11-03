@@ -5,8 +5,8 @@
  */
 package View.Alterar;
 
-import Controller.Tabelas.ModeloTabelaProduto;
-import Controladores.ControladoresDAO.controladorProdutosDAO;
+import Model.Tabelas.ModeloTabelaProduto;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Model.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AlterarProduto extends javax.swing.JDialog {
 
-    controladorProdutosDAO controladorproduto;
+    controladorProdutoDAO controladorproduto;
     boolean status;
     JTable tabela;
    
     
     public AlterarProduto(boolean modal,JTable tabela) {                          
         this.tabela=tabela;
-        controladorproduto=new controladorProdutosDAO();
+        controladorproduto=new controladorProdutoDAO();
         initComponents();  
         setModal(true);
     }
@@ -188,7 +188,7 @@ public class AlterarProduto extends javax.swing.JDialog {
 
         try {
             controladorproduto.atualizarProduto(Float.parseFloat(campoPreco.getText()), Integer.parseInt(campoQuantidade.getText()),Integer.parseInt(campoCodigo.getText()));
-        ArrayList<Produto> produto= new controladorProdutosDAO().retornarProdutos();
+        ArrayList<Produto> produto= new controladorProdutoDAO().retornarProdutos();
         ModeloTabelaProduto modelo= new ModeloTabelaProduto(produto);
         tabela.setModel(modelo);
         System.out.println(modelo.hashCode());

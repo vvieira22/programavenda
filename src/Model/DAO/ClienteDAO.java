@@ -107,7 +107,7 @@ public class ClienteDAO {
         }
         return listacliente;
     }
- 
+        
      public int quantidadeClientes(){
         String sql="select count(*) as quantidade from cliente";
         

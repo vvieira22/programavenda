@@ -1,10 +1,10 @@
 package View;
 
 import Controladores.ControladorVendas;
-import Controladores.ControladoresDAO.controladorProdutosDAO;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Controladores.ControladoresDAO.controladorVendaDAO;
-import Controller.Tabelas.ModeloTabelaProduto;
-import Controller.Tabelas.ModeloTabelaVenda;
+import Model.Tabelas.ModeloTabelaProduto;
+import Model.Tabelas.ModeloTabelaVenda;
 import Model.Produto;
 import View.Alterar.AlterarProduto;
 import View.Cadastro.cadastroProduto;

@@ -1,6 +1,6 @@
 package Controladores;
 
-import Controladores.ControladoresDAO.controladorProdutosDAO;
+import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Controladores.ControladoresDAO.controladorVendaDAO;
 import Model.ItemVenda;
 import Model.Produto;
@@ -12,13 +12,13 @@ public class ControladorVendas {
   ArrayList<Produto> arrayprodutos;
   private ArrayList<ItemVenda> itensvenda; 
   private controladorVendaDAO controladorvendadao;
-  private controladorProdutosDAO controladorprodutosdao;
+  private controladorProdutoDAO controladorprodutosdao;
   
   View_Venda view_venda;
 
     public ControladorVendas() {
        itensvenda=new ArrayList<ItemVenda>();
-       controladorprodutosdao=new controladorProdutosDAO();
+       controladorprodutosdao=new controladorProdutoDAO();
         view_venda=new View_Venda();
     }
 
