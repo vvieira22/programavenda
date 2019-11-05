@@ -1,6 +1,7 @@
 package View.Cadastro;
 
 
+import Controladores.ControladorVendas;
 import Controladores.ControladoresDAO.controladorVendaDAO;
 import Model.Tabelas.ModeloTabelaVenda;
 import Model.DAO.VendaDAO;
@@ -19,15 +20,21 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class cadastroVenda extends javax.swing.JDialog {
-    
+    float total;
+    cadastroItemVenda cadastroitemvenda;
     JTable tabela;
     ModeloTabelaVenda modelotabelavenda;
     controladorVendaDAO controladorvendadao;
-       
+    ControladorVendas controladorvendas;
+    
     public cadastroVenda(JTable tabela,ModeloTabelaVenda modelotabelavenda) {
+         
+        total=0;
         initComponents();    
          controladorvendadao=new controladorVendaDAO();
-        this.tabela=tabela;            
+        this.tabela=tabela;
+        controladorvendas=new ControladorVendas();
+        cadastroitemvenda= new cadastroItemVenda(null, rootPaneCheckingEnabled,Tabela,campoTotal);
     }   
  
     /**
@@ -53,7 +60,7 @@ public class cadastroVenda extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabela = new javax.swing.JTable();
         botaoRemover = new javax.swing.JButton();
         botaoAdicionar = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox();
@@ -108,7 +115,7 @@ public class cadastroVenda extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Finalização da Venda");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -119,7 +126,7 @@ public class cadastroVenda extends javax.swing.JDialog {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabela);
 
         botaoRemover.setText("Remover");
 
@@ -249,10 +256,12 @@ public class cadastroVenda extends javax.swing.JDialog {
 
         if(campoCpfCliente.getText().equals("   .   .   -  ")){
         try {  
-            Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), comboBox.getSelectedItem().toString());
+            Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
             controladorvendadao.inserirVenda(venda);
             atualizarLista();  
             tabela.setModel(modelotabelavenda);
+            dispose();
+            JOptionPane.showMessageDialog(rootPane, "Venda Cadastrada com Sucesso !!");
         } catch (Exception e) {             
             JOptionPane.showMessageDialog(rootPane,"Por favor revise os campos !!");
             }
@@ -260,9 +269,10 @@ public class cadastroVenda extends javax.swing.JDialog {
         
         else{
             try {
-            Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), comboBox.getName());
+            Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,campoCpfCliente.getText(), null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
             controladorvendadao.inserirVenda(venda);
             atualizarLista();
+            tabela.setModel(modelotabelavenda);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,"Por favor revise os campos !!");
             }
@@ -275,15 +285,16 @@ public class cadastroVenda extends javax.swing.JDialog {
         
     }//GEN-LAST:event_campoCpfClienteKeyPressed
 
-    private void botaoAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarActionPerformed
-       cadastroItemVenda cadastroitemvenda= new cadastroItemVenda(null, rootPaneCheckingEnabled);
-       cadastroitemvenda.setVisible(true);
-    }//GEN-LAST:event_botaoAdicionarActionPerformed
-
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxActionPerformed
 
+    private void botaoAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarActionPerformed
+     
+        cadastroitemvenda.setVisible(true);     
+    }//GEN-LAST:event_botaoAdicionarActionPerformed
+
+                                        
     /**
      * @param args the command line arguments
      */
@@ -333,7 +344,8 @@ public class cadastroVenda extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoAdicionar;
+    private javax.swing.JTable Tabela;
+    public javax.swing.JButton botaoAdicionar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoConfirmar;
     private javax.swing.JButton botaoRemover;
@@ -350,6 +362,5 @@ public class cadastroVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

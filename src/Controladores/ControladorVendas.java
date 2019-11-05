@@ -23,7 +23,9 @@ public class ControladorVendas {
     }
 
   public void abrirJanela(){
+      
       view_venda.setVisible(true);
+      
   }
   public View_Venda retornarJanela(){
       return view_venda;
@@ -45,12 +47,19 @@ public class ControladorVendas {
  
  public void inserirNaArrayItemVenda(int codigo_produto,int quantidade,float preco, float totalItem){               
      ItemVenda itemvenda= new ItemVenda(codigo_produto, quantidade, preco, totalItem);
-     itensvenda.add(itemvenda);
-     cadastrarVendaFinal();
+     itensvenda.add(itemvenda); 
+     System.out.println(itensvenda.get(0).getQuantidade());
  }
  public boolean verificarSeProdutoJaExiste(int id){
      return controladorprodutosdao.verificarSeProdutoExiste(id);
  }
+ 
+  
+public ArrayList<ItemVenda> retornarArrayAntesDeCadastrarNoBanco(){
+    return itensvenda;
+}
+ 
+ 
  
  public int receberArraydeProdutosAtualizada(){
      
