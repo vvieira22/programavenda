@@ -36,7 +36,6 @@ public class View_Cliente extends javax.swing.JInternalFrame {
         botaoPesquisar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         botaoCadastrar = new javax.swing.JButton();
-        botaoRemover = new javax.swing.JButton();
         botaoAlterar = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
@@ -61,19 +60,12 @@ public class View_Cliente extends javax.swing.JInternalFrame {
         botaoPesquisar.setText("Pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
-        jLabel2.setText("*Para alterar e remover um cliente, selecione um abaixo ");
+        jLabel2.setText("*Para alterar um cliente, selecione um abaixo ");
 
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
-            }
-        });
-
-        botaoRemover.setText("Remover");
-        botaoRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoRemoverActionPerformed(evt);
             }
         });
 
@@ -102,13 +94,11 @@ public class View_Cliente extends javax.swing.JInternalFrame {
                         .addGap(51, 51, 51)
                         .addComponent(botaoCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoRemover))
+                        .addComponent(botaoAlterar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel2)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +106,6 @@ public class View_Cliente extends javax.swing.JInternalFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrar)
-                    .addComponent(botaoRemover)
                     .addComponent(botaoAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,13 +131,6 @@ public class View_Cliente extends javax.swing.JInternalFrame {
         cadastro.setVisible(true);
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
-    private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed
-        modelotabelaproduto= new ModeloTabelaProduto(controladorprodutosdao.retornarProdutos());
-        Produto produto= modelotabelaproduto.obterProduto(tabela.getSelectedRow());
-        controladorprodutosdao.excluirProduto(produto.getCodigo());      
-        setarModeloTabela();
-    }//GEN-LAST:event_botaoRemoverActionPerformed
-
     private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
         modelotabelaproduto= new ModeloTabelaProduto(controladorprodutosdao.retornarProdutos());
         Produto produto= modelotabelaproduto.obterProduto(tabela.getSelectedRow());
@@ -163,7 +145,6 @@ public class View_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoPesquisar;
-    private javax.swing.JButton botaoRemover;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

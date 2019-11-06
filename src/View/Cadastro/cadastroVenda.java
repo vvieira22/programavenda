@@ -4,20 +4,10 @@ package View.Cadastro;
 import Controladores.ControladorVendas;
 import Controladores.ControladoresDAO.controladorVendaDAO;
 import Model.Tabelas.ModeloTabelaVenda;
-import Model.DAO.VendaDAO;
 import Model.Venda;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+
 
 public class cadastroVenda extends javax.swing.JDialog {
     float total;
@@ -266,6 +256,7 @@ public class cadastroVenda extends javax.swing.JDialog {
             atualizarLista();  
             tabela.setModel(modelotabelavenda);
             dispose();
+            
             JOptionPane.showMessageDialog(rootPane, "Venda Cadastrada com Sucesso !!");
         } catch (Exception e) {             
             JOptionPane.showMessageDialog(rootPane,"Por favor revise os campos !!");
