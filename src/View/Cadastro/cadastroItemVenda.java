@@ -4,6 +4,7 @@ package View.Cadastro;
 import Controladores.ControladorVendas;
 import Model.ItemVenda;
 import Model.Tabelas.ModeloTabelaItemVenda;
+import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -24,6 +25,9 @@ public class cadastroItemVenda extends javax.swing.JDialog {
         this.campototal=campototal;
     }
     
+    public  ArrayList<ItemVenda> retornarArrayItemVenda(){
+        return controladorvendas.retornarArrayAntesDeCadastrarNoBanco();
+    }
    
     /**
      * This method is called from within the constructor to initialize the form.

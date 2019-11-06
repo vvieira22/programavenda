@@ -129,6 +129,11 @@ public class cadastroVenda extends javax.swing.JDialog {
         jScrollPane1.setViewportView(Tabela);
 
         botaoRemover.setText("Remover");
+        botaoRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRemoverActionPerformed(evt);
+            }
+        });
 
         botaoAdicionar.setText("Adicionar");
         botaoAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +262,7 @@ public class cadastroVenda extends javax.swing.JDialog {
         if(campoCpfCliente.getText().equals("   .   .   -  ")){
         try {  
             Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
-            controladorvendadao.inserirVenda(venda);
+            controladorvendas.cadastrarVendaFinal(venda,cadastroitemvenda.retornarArrayItemVenda());
             atualizarLista();  
             tabela.setModel(modelotabelavenda);
             dispose();
@@ -270,9 +275,11 @@ public class cadastroVenda extends javax.swing.JDialog {
         else{
             try {
             Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,campoCpfCliente.getText(), null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
-            controladorvendadao.inserirVenda(venda);
+            controladorvendas.cadastrarVendaFinal(venda,cadastroitemvenda.retornarArrayItemVenda());
             atualizarLista();
             tabela.setModel(modelotabelavenda);
+            dispose();
+            JOptionPane.showMessageDialog(rootPane, "Venda Cadastrada com Sucesso !!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,"Por favor revise os campos !!");
             }
@@ -293,6 +300,10 @@ public class cadastroVenda extends javax.swing.JDialog {
      
         cadastroitemvenda.setVisible(true);     
     }//GEN-LAST:event_botaoAdicionarActionPerformed
+
+    private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed
+           
+    }//GEN-LAST:event_botaoRemoverActionPerformed
 
                                         
     /**

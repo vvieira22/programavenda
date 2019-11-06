@@ -4,6 +4,7 @@ import Controladores.ControladoresDAO.controladorProdutoDAO;
 import Controladores.ControladoresDAO.controladorVendaDAO;
 import Model.ItemVenda;
 import Model.Produto;
+import Model.Venda;
 import View.Cadastro.cadastroVenda;
 import View.View_Venda;
 import java.util.ArrayList;
@@ -83,10 +84,10 @@ public ArrayList<ItemVenda> retornarArrayAntesDeCadastrarNoBanco(){
  public void atualizarTabela(){
      view_venda.setarModeloTabela();
  }
- public void cadastrarVendaFinal(){
+ public void cadastrarVendaFinal(Venda venda, ArrayList<ItemVenda> arrayitemvenda){
      controladorvendadao=new controladorVendaDAO();
-     controladorvendadao.inserirItensVenda(null, itensvenda);
-     controladorvendadao.inserirVenda(null);
+     controladorvendadao.inserirVenda(venda);
+     controladorvendadao.inserirItensVenda(venda, arrayitemvenda);
  }
   
 }
