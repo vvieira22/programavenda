@@ -49,8 +49,7 @@ public class ControladorVendas {
  public void inserirNaArrayItemVenda(int codigo_produto,int quantidade,float preco, float totalItem){               
      ItemVenda itemvenda= new ItemVenda(codigo_produto, quantidade, preco, totalItem);
      itensvenda.add(itemvenda); 
-     System.out.println(itensvenda.get(0).getQuantidade());
- }
+      }
  public boolean verificarSeProdutoJaExiste(int id){
      return controladorprodutosdao.verificarSeProdutoExiste(id);
  }

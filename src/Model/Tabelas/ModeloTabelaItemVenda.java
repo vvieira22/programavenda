@@ -27,7 +27,9 @@ public class ModeloTabelaItemVenda extends AbstractTableModel {
     public ModeloTabelaItemVenda(ArrayList<ItemVenda> ItemVenda) {
         this.itemvenda= ItemVenda;
     }
-
+    public ArrayList<ItemVenda> retornarItensVenda(){
+        return itemvenda;
+    }
         @Override
         public String getColumnName(int columnIndex){
             return colunas[columnIndex];

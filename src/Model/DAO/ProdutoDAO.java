@@ -48,6 +48,10 @@ public class ProdutoDAO {
         } 
     }
     
+    
+    
+    
+    
     public void removerProdutodoBanco(int codigo) {
         String sql= "delete from produto where codigo=?";
         
@@ -128,7 +132,38 @@ public class ProdutoDAO {
     
     
     
-    public void atualizarQuantidadeProduto(int i){
+    public void atualizarQuantidadeProduto(int i,int codigo){
+        String sql= "select quantidade from produto where codigo=?";
+        
+         try {
+            Connection conectar = conexao.getInstance().abrir();
+            PreparedStatement comando= conectar.prepareCall(sql);
+            
+            comando.setInt(1,codigo);
+            ResultSet resultset=comando.executeQuery(); 
+            resultset.next();
+            int quantidadebanco=resultset.getInt("quantidade");         
+            if(i<quantidadebanco){
+                 try {
+                    String sql2="update produto set quantidade=? where codigo=?";
+                     PreparedStatement comandoo= conectar.prepareCall(sql2);
+                     conectar.prepareCall(sql2);
+                     
+                     comandoo.setInt(1,quantidadebanco-i);
+                     comandoo.setInt(2,codigo);
+                     comandoo.execute();
+                     conectar.close();   
+                     
+                } catch (SQLException e) {
+                
+                }
+            }
+            
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Quantidade em estoque Menor que a pedida");
+        }  
+        
         
     }
     
@@ -164,5 +199,23 @@ public class ProdutoDAO {
              e.printStackTrace();
          }
     }
-
+    public int retornarQuantidadeDoProduto(int codigo){
+           
+        String sql= "select quantidade from produto where codigo=?";
+        
+         try {
+            Connection conectar = conexao.getInstance().abrir();
+            PreparedStatement comando= conectar.prepareCall(sql);
+            
+            comando.setInt(1,codigo);
+            ResultSet resultset=comando.executeQuery(); 
+            resultset.next(); 
+            int quantidadebanco=resultset.getInt("quantidade");
+            return quantidadebanco;
+         }catch (Exception e) {
+        }
+     return -1;    
+    }
+    
 }
+

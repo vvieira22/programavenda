@@ -72,6 +72,7 @@ public class View_Cliente extends javax.swing.JInternalFrame {
         });
 
         botaoAlterar.setText("Alterar");
+        botaoAlterar.setEnabled(false);
         botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAlterarActionPerformed(evt);

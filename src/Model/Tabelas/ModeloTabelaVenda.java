@@ -22,7 +22,9 @@ public class ModeloTabelaVenda extends AbstractTableModel {
         this.venda=venda;
     }
    
-
+    public ArrayList<Venda> retornarArray(){
+        return venda;
+    }
         @Override
         public String getColumnName(int columnIndex){
             return colunas[columnIndex];

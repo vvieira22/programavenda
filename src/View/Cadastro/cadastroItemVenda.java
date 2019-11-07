@@ -2,6 +2,7 @@ package View.Cadastro;
 
 
 import Controladores.ControladorVendas;
+import Model.DAO.ProdutoDAO;
 import Model.ItemVenda;
 import Model.Tabelas.ModeloTabelaItemVenda;
 import java.util.ArrayList;
@@ -28,7 +29,15 @@ public class cadastroItemVenda extends javax.swing.JDialog {
     public  ArrayList<ItemVenda> retornarArrayItemVenda(){
         return controladorvendas.retornarArrayAntesDeCadastrarNoBanco();
     }
-   
+   public void atualizarQuantidade(){
+        if(modelotabelaitemvenda.retornarItensVenda().size()>0){
+        for(int i=0;i<modelotabelaitemvenda.retornarItensVenda().size();i++){
+            ProdutoDAO.getInstance().atualizarQuantidadeProduto(modelotabelaitemvenda.retornarItensVenda().get(i).getQuantidade(), modelotabelaitemvenda.retornarItensVenda().get(i).getCodigo_produto());
+        }
+        }
+        else
+        JOptionPane.showMessageDialog(null, "teste");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -166,8 +175,17 @@ public class cadastroItemVenda extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoIdActionPerformed
 
+    
+ 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
-       if(controladorvendas.verificarSeProdutoJaExiste(Integer.parseInt(campoId.getText()))==true){
+
+        if(ProdutoDAO.getInstance().retornarQuantidadeDoProduto(Integer.parseInt(campoId.getText()))>=Integer.parseInt(campoQuantidade.getText())){
+            
+        
+        
+        
+        
+        if(controladorvendas.verificarSeProdutoJaExiste(Integer.parseInt(campoId.getText()))==true){
             
            if(controladorvendas.verificarSeProdutoJaExiste(Integer.parseInt(campoId.getText()))==true){
                 for(int i =0;i<controladorvendas.receberArraydeProdutosAtualizada();i++){   
@@ -188,7 +206,10 @@ public class cadastroItemVenda extends javax.swing.JDialog {
                 }
             }
         }
-       
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Quantidade em estoque menor que a pedida");
+        }
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     public ItemVenda retornarProdutoPeloIndice(int i){

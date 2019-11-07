@@ -252,10 +252,14 @@ public class cadastroVenda extends javax.swing.JDialog {
         if(campoCpfCliente.getText().equals("   .   .   -  ")){
         try {  
             Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,"Nao Informado", null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
+            cadastroitemvenda.atualizarQuantidade();
             controladorvendas.cadastrarVendaFinal(venda,cadastroitemvenda.retornarArrayItemVenda());
+            
             atualizarLista();  
             tabela.setModel(modelotabelavenda);
+            
             dispose();
+            
             
             JOptionPane.showMessageDialog(rootPane, "Venda Cadastrada com Sucesso !!");
         } catch (Exception e) {             
@@ -266,9 +270,12 @@ public class cadastroVenda extends javax.swing.JDialog {
         else{
             try {
             Venda venda= new Venda(controladorvendadao.retornarQuantidadeVenda()+1,campoCpfCliente.getText(), null, Float.parseFloat(campoTotal.getText()), (String)comboBox.getSelectedItem());
+            cadastroitemvenda.atualizarQuantidade();
             controladorvendas.cadastrarVendaFinal(venda,cadastroitemvenda.retornarArrayItemVenda());
+            
             atualizarLista();
             tabela.setModel(modelotabelavenda);
+            
             dispose();
             JOptionPane.showMessageDialog(rootPane, "Venda Cadastrada com Sucesso !!");
             } catch (Exception e) {
