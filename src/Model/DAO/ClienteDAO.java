@@ -33,7 +33,7 @@ public class ClienteDAO {
             
             comando.setString(1,cpf);
             comando.setString(2,nome);
-            comando.setInt(3,codigo);
+            comando.setInt(3,quantidadeClientes()+1);
             comando.setString(4,telefoneum);
             comando.setString(5,telefonedois);
             comando.setString(6,email);

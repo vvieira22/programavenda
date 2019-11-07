@@ -1,10 +1,12 @@
 package View;
 
 import Controladores.ControladoresDAO.controladorProdutoDAO;
+import Model.DAO.ProdutoDAO;
 import Model.Tabelas.ModeloTabelaProduto;
 import Model.Produto;
 import View.Alterar.AlterarProduto;
 import View.Cadastro.cadastroProduto;
+import javax.swing.table.TableModel;
 
 
 public class View_Produto extends javax.swing.JInternalFrame {
@@ -31,7 +33,7 @@ public class View_Produto extends javax.swing.JInternalFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        campoBusca = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         botaoPesquisar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -56,9 +58,25 @@ public class View_Produto extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabela);
 
+        campoBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoBuscaActionPerformed(evt);
+            }
+        });
+        campoBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoBuscaKeyReleased(evt);
+            }
+        });
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa-icone-4.png"))); // NOI18N
 
         botaoPesquisar.setText("Pesquisar");
+        botaoPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 12)); // NOI18N
         jLabel2.setText("*Para alterar e remover um produto, selecione um abaixo ");
@@ -95,7 +113,7 @@ public class View_Produto extends javax.swing.JInternalFrame {
                         .addGap(202, 202, 202)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoPesquisar))
                     .addGroup(layout.createSequentialGroup()
@@ -126,7 +144,7 @@ public class View_Produto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botaoPesquisar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -158,16 +176,32 @@ public class View_Produto extends javax.swing.JInternalFrame {
         alterarproduto.setVisible(true);      
     }//GEN-LAST:event_botaoAlterarActionPerformed
 
+    private void campoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoBuscaActionPerformed
+
+    private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
+
+      tabela.setModel(ProdutoDAO.getInstance().pesquisarCliente(campoBusca.getText()));
+    }//GEN-LAST:event_botaoPesquisarActionPerformed
+
+    private void campoBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoBuscaKeyReleased
+         tabela.setModel(ProdutoDAO.getInstance().pesquisarCliente(campoBusca.getText()));
+         if(campoBusca.getText().equals("")){
+             setarModeloTabela();
+         }
+    }//GEN-LAST:event_campoBuscaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoRemover;
+    private javax.swing.JTextField campoBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables

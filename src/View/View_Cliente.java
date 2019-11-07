@@ -2,8 +2,10 @@ package View;
 
 import Controladores.ControladoresDAO.controladorClientesDAO;
 import Controladores.ControladoresDAO.controladorProdutoDAO;
+import Model.DAO.ClienteDAO;
 import Model.Tabelas.ModeloTabelaProduto;
 import Model.Produto;
+import Model.Tabelas.ModeloTabelaCliente;
 import View.Alterar.AlterarProduto;
 import View.Cadastro.cadastroCliente;
 import View.Cadastro.cadastroProduto;
@@ -14,14 +16,14 @@ public class View_Cliente extends javax.swing.JInternalFrame {
     private cadastroProduto cadastroproduto;    
     private ModeloTabelaProduto modelotabelaproduto;
     
-    public View_Cliente(controladorClientesDAO controladorclientessdao) {
+    public View_Cliente() {
          initComponents();            
          setarModeloTabela();
     }  
        
     public void setarModeloTabela(){       
-        modelotabelaproduto= new ModeloTabelaProduto(controladorprodutosdao.retornarProdutos());
-        tabela.setModel(modelotabelaproduto);
+        ModeloTabelaCliente modelotabelacliente=new ModeloTabelaCliente(ClienteDAO.getInstance().retornarTodos());
+        tabela.setModel(modelotabelacliente);
     }
     
     @SuppressWarnings("unchecked")
@@ -127,7 +129,7 @@ public class View_Cliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        cadastroCliente cadastro= new cadastroCliente();
+        cadastroCliente cadastro= new cadastroCliente(tabela);
         cadastro.setVisible(true);
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 

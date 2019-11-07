@@ -14,7 +14,7 @@ public class ControladorClientes {
     public ControladorClientes() {
         controladorclientes=new ControladorClientes();
         controladorclientesdao=new controladorClientesDAO();
-        viewcliente=new View_Cliente(controladorclientesdao);
+        viewcliente=new View_Cliente();
     }
     public void alterarCliente(Cliente cliente,String nome, String telefoneum, String telefonedois,
                                 String email,

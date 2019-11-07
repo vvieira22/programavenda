@@ -50,8 +50,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
 
         Cliente.setText("Cliente");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Usuários");
+        jButton4.setEnabled(false);
 
         desktop.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         desktop.setPreferredSize(new java.awt.Dimension(754, 659));
@@ -68,8 +74,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         );
 
         jButton2.setText("Nota Fiscal");
+        jButton2.setEnabled(false);
 
         jButton3.setText("Relatório");
+        jButton3.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,11 +86,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -105,7 +113,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addGap(7, 7, 7))
+                .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -150,6 +158,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
        }    
        controladorprodutos.atualizarTabela();
     }//GEN-LAST:event_ProdutoActionPerformed
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        View_Cliente viewcliente=new View_Cliente();
+        viewcliente.setVisible(true);
+        viewcliente.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)viewcliente.getUI()).setNorthPane(null); 
+        
+         if(desktop.getAllFrames().length==0){
+           desktop.add(viewcliente);
+       }
+       
+       else{    
+        desktop.remove(0);
+        desktop.add(viewcliente);
+        desktop.revalidate();
+        desktop.repaint();
+       }
+         viewcliente.setarModeloTabela();
+    }//GEN-LAST:event_ClienteActionPerformed
 
     /**
      * @param args the command line arguments

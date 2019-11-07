@@ -1,29 +1,21 @@
 package View.Cadastro;
 
 
+import Model.DAO.ClienteDAO;
+import Model.Tabelas.ModeloTabelaCliente;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class cadastroCliente extends javax.swing.JDialog {
     
-    private static cadastroCliente instance;
+  
+    JTable tabela;
     
-    public cadastroCliente() {
-        initComponents();    
-    }
-
-    public void setarImagemStatusCpf(){
-      
-        ///if(controladorClientes.getInstance().verificarCpfExistente(campoCpf.getText())==true)
-          //// imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/errado2.png")));
-          // else
-          ///////  imagemCpfStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/correto2.png")));                
-    }
-    
-    public static cadastroCliente getInstance(){
-        if(instance==null)
-            instance=new cadastroCliente();
-        return instance;
+    public cadastroCliente(JTable tabela) {
+        initComponents();   
+        this.tabela=tabela;
     }
 
     public String getCampoBairro() {
@@ -192,18 +184,17 @@ public class cadastroCliente extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        campoCpf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                campoCpfKeyPressed(evt);
-            }
-        });
 
         try {
             campoTelefoneDois.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        campoTelefoneDois.setText("");
+        campoTelefoneDois.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTelefoneDoisActionPerformed(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 204, 153));
@@ -408,13 +399,50 @@ public class cadastroCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_campoEmailActionPerformed
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
-       
-        //controladorCadastroCLiente.getInstance().cadastrarCliente(campoCpf.getText(),campoNome.getText(),campoTelefoneUm.getText(),campoTelefoneDois.getText(),campoEmail.getText(),campoRua.getText(),Integer.parseInt(campoNumero.getText()),campoBairro.getText(),campoComplemento.getText());    
+        try {
+            
+        
+        if(campoTelefoneDois.equals("(  )     -")){
+            ClienteDAO.getInstance().inserirClientenoBanco(campoCpf.getText(), 
+                    campoNome.getText(), 
+                    0, 
+                    campoTelefoneUm.getText(), 
+                    null, 
+                    campoEmail.getText(), 
+                    campoRua.getText(), 
+                    Integer.parseInt(campoNumero.getText()), 
+                    campoBairro.getText(), 
+                    campoComplemento.getText());
+            ModeloTabelaCliente modelotabelacliente=new ModeloTabelaCliente(ClienteDAO.getInstance().retornarTodos());
+            tabela.setModel(modelotabelacliente);
+            JOptionPane.showMessageDialog(null, "CADASTRADO COM SUCESSO!");
+        }
+        else{
+            ClienteDAO.getInstance().inserirClientenoBanco(campoCpf.getText(), 
+                    campoNome.getText(), 
+                    0, 
+                    campoTelefoneUm.getText(), 
+                    campoTelefoneDois.getText(), 
+                    campoEmail.getText(), 
+                    campoRua.getText(), 
+                    Integer.parseInt(campoNumero.getText()), 
+                    campoBairro.getText(), 
+                    campoComplemento.getText());
+            ModeloTabelaCliente modelotabelacliente=new ModeloTabelaCliente(ClienteDAO.getInstance().retornarTodos());
+        tabela.setModel(modelotabelacliente);
+        dispose();
+        JOptionPane.showMessageDialog(null, "CADASTRADO COM SUCESSO!");
+        }
+        
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(null, e);
+        }
+        
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
-    private void campoCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCpfKeyPressed
-       setarImagemStatusCpf();
-    }//GEN-LAST:event_campoCpfKeyPressed
+    private void campoTelefoneDoisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTelefoneDoisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTelefoneDoisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,7 +475,7 @@ public class cadastroCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                cadastroCliente dialog = new cadastroCliente();
+                cadastroCliente dialog = new cadastroCliente(null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -7,7 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 
 public class ProdutoDAO {
@@ -104,7 +107,30 @@ public class ProdutoDAO {
         return false;
     }  
     
+    public TableModel pesquisarCliente(String nome){
+        String sql="select * from produto where nome like ?";
+           
+        try {
+            Connection conectar= conexao.getInstance().abrir();   
+            PreparedStatement comando= conectar.prepareStatement(sql);
+            
+            comando.setString(1,nome);
+            ResultSet resultset=comando.executeQuery();
+            
+            
+            return DbUtils.resultSetToTableModel(resultset);
+                
+            } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+         return null;   
+    }
     
+    
+    
+    public void atualizarQuantidadeProduto(int i){
+        
+    }
     
     public int quantidadeProdutos() {
         String sql= "select MAX(codigo) as quantidade from produto";
